@@ -15,16 +15,25 @@ myButton.addEventListener("mouseout", () => {
 
 myButton.addEventListener("click", btnClickCallback);
 
-
-//Substract
-const myButtonSubstract = document.getElementById("btnSubstract");
-
+//Inputs and creation of elements
+const newInputElement = document.createElement("input");
+newInputElement.textContent = "Fue creado con createElement";
+const Container = document.querySelector(".container")
 
 //Add
 const myButtonAdd = document.getElementById("btnAdd");
+const AddClickCallback = () => { //Function to add new elements
+    Container.appendChild(newInputElement);
+    Container.appendChild(document.createElement("br"));
+}
+
+myButtonAdd.addEventListener("click", AddClickCallback);
+
+
+
+//Substract - Remove last element
+const myButtonSubstract = document.getElementById("btnSubstract");
 
 
 
 
-console.log(myButton);
-console.log('TODOList is connected!');
