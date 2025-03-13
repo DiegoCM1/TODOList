@@ -1,0 +1,27 @@
+.paragraph1{
+    color: red;
+    font-size: 20px;
+    font-family: Arial, sans-serif;
+}
+
+
+.header{
+    display: flex;
+    border: solid 1px red;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    width: 100%;
+}
+
+
+.footer{
+    background-color: #333;
+    position: fixed;
+    color: white;
+    text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
