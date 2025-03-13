@@ -27,3 +27,4 @@ const myButtonAdd = document.getElementById("btnAdd");
 
 
 console.log(myButton);
+console.log('TODOList is connected!');
