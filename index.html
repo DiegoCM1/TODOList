@@ -13,8 +13,6 @@
         <H1>This is the title of my fucking todo list</H1>
     </header>
 
-    
-
     <button id="btn">
         <p>
             Im a fucking button so what?
@@ -22,16 +20,12 @@
     </button>
 
     <button id="btnAdd">
-        <p>
-            Click on me to add a new task mf
-        </p>
+        <i data-lucide="plus"></i>
     </button>
 
 
     <button id="btnSubstract">
-        <p>
-            Click on me to remove a task mf
-        </p>
+        <i data-lucide="minus"></i>
     </button>
 
     <div class="container">
@@ -45,6 +39,16 @@
         </p>
     </footer>
 
+
+
+
+    <!-- Importing lucid -->
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+
+    <!-- My own file -->
     <script src="app.js"></script>
 </body>
 
