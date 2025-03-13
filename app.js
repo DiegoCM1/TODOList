@@ -33,6 +33,11 @@ myButtonAdd.addEventListener("click", AddClickCallback);
 
 //Substract - Remove last element
 const myButtonSubstract = document.getElementById("btnSubstract");
+const SubstractClickCallback = () => { //Function to remove last elements
+    Container.removeChild(Container.lastChild);
+    Container.removeChild(Container.lastChild);
+}
+myButtonSubstract.addEventListener("click", SubstractClickCallback);
 
 
 
