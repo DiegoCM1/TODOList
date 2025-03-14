@@ -10,34 +10,95 @@
 
 <body>
     <header class="header">
-        <H1>This is the title of my fucking todo list</H1>
+        <H1 class="h1">Tasks</H1>
+
+        <nav class="nav">
+            <button id="starredListButton" class="buttonNav"> <!--Button to show starred tasks-->
+                <i data-lucide="star"></i>
+            </button>
+            <button id="dailyListButton" class="buttonNav"> <!--Button to show Daily Tasks-->
+                Daily List
+            </button>
+            <button id="newListButton" class="buttonNav"> <!--Button to show a new list-->
+                + List
+            </button>
+        </nav>
     </header>
 
-    <button id="btn">
-        <p>
-            Im a fucking button so what?
-        </p>
-    </button>
 
-    <button id="btnAdd">
-        <i data-lucide="plus"></i>
-    </button>
+    <!-- Starred List of Tasks -->
+    <section class="List" id="starredList">
+        <button id="btn">
+            <p>
+                Im a fucking button so what?
+            </p>
+        </button>
 
-
-    <button id="btnSubstract">
-        <i data-lucide="minus"></i>
-    </button>
-
-    <div class="container">
-        <p>This is your fucking list of tasks</p>
-    </div>
+        <button id="btnAdd">
+            <i data-lucide="plus"></i>
+        </button>
 
 
-    <footer class="footer">
-        <p>
-            This is the motherfucking footer
-        </p>
-    </footer>
+        <button id="btnSubstract">
+            <i data-lucide="minus"></i>
+        </button>
+
+        <div class="container">
+            <p>This is your fucking list of tasks</p>
+        </div>
+    </section>
+
+
+    <!-- Daily List of Tasks -->
+    <section class="List" id="dailyList">
+        <button id="btnDaily">
+            <p>
+                Im a fucking button in Daily tasks so what?
+            </p>
+        </button>
+
+        <button id="btnAddDaily">
+            <i data-lucide="plus"></i>
+        </button>
+
+
+        <button id="btnSubstractDaily">
+            <i data-lucide="minus"></i>
+        </button>
+
+        <div class="container">
+            <p>This is your fucking list of tasks</p>
+        </div>
+    </section>
+
+
+    <!-- New List of Tasks -->
+    <section class="List" id="newList">
+        <button id="btnNew">
+            <p>
+                Im a fucking button in new list so what?
+            </p>
+        </button>
+
+        <button id="btnAddNew">
+            <i data-lucide="plus"></i>
+        </button>
+
+
+        <button id="btnSubstractNew">
+            <i data-lucide="minus"></i>
+        </button>
+
+        <div class="container">
+            <p>This is your fucking list of tasks</p>
+        </div>
+    </section>
+
+
+
+
+
+
 
 
 
