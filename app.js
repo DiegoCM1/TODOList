@@ -98,7 +98,7 @@ form.addEventListener("submit", (event) => {
 }); //Add event listener to the form
 
 
-
+//Logic for the creation of tasks
 const formEx = document.querySelector("#task-form"); //Select the form
 const list = document.querySelector("#task-list"); //Select the list to create the tasks.
 
@@ -106,10 +106,45 @@ formEx.addEventListener("submit", (e) => {
   e.preventDefault(); //Prevents default beahviour
   const inputEx = document.querySelector("#task-input") //Select the input
 
-  const newLi = document.createElement("li")//Create
-  newLi.textContent = inputEx.value//Edit
-  list.append(newLi)
+  // Add task button
+  const newLi = document.createElement("li")//Create task
+  newLi.textContent = inputEx.value//Edit task
+  list.append(newLi)//Insert task
 
-  console.log(inputEx.value) //Show the value of the input
+  // Edit task button
+  const newEditBtn = document.createElement("button")//Create button
+  newEditBtn.textContent = "✏️" //Edit button
+  list.append(newEditBtn)//Insert button
+  const inputInsideNewList = document.createElement("input")//Create input to edit
+  newEditBtn.addEventListener("click", () => {
+    inputInsideNewList.textContent = inputEx.value //The input shows the previous text
+    console.log(inputEx.value)
+    newLi.replaceWith(inputInsideNewList)
 
+    newEditBtn.replaceWith(finishEditBtn)
+
+  })
+
+
+  // Finish edit button
+  const finishEditBtn = document.createElement("button") //Create button
+  finishEditBtn.textContent = "✅" // Edit content
+  finishEditBtn.addEventListener("click", (e) => {
+    inputInsideNewList.replaceWith(newLi)
+    finishEditBtn.replaceWith(newEditBtn)
+
+  })
+
+
+  // Remove task button
+  const newRemoveBtn = document.createElement("button")//Create button
+  newRemoveBtn.textContent = "❌" //Edit button
+  list.append(newRemoveBtn)//Insert button
+  newRemoveBtn.addEventListener("click", (e) => {
+    newLi.remove()
+    inputInsideNewList.remove()
+    newEditBtn.remove()
+    newRemoveBtn.remove()
+    finishEditBtn.remove()
+  })
 })
