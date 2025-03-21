@@ -98,54 +98,58 @@ form.addEventListener("submit", (event) => {
 }); //Add event listener to the form
 
 
-//Logic for the creation of tasks
-const formEx = document.querySelector("#task-form"); //Select the form
-const list = document.querySelector("#task-list"); //Select the list to create the tasks.
+
+// Logic to add and remove tasks
+const formEx = document.querySelector("#task-form"); // Select the form
+const list = document.querySelector("#task-list"); // Select the list
 
 formEx.addEventListener("submit", (e) => {
-  e.preventDefault(); //Prevents default beahviour
-  const inputEx = document.querySelector("#task-input") //Select the input
+  e.preventDefault(); // Prevent default form behavior
+  const inputEx = document.querySelector("#task-input"); // Select input
 
-  // Add task button
-  const newLi = document.createElement("li")//Create task
-  newLi.textContent = inputEx.value//Edit task
-  list.append(newLi)//Insert task
+  if (inputEx.value.trim() === "") return; // Ignore empty tasks
 
-  // Edit task button
-  const newEditBtn = document.createElement("button")//Create button
-  newEditBtn.textContent = "✏️" //Edit button
-  list.append(newEditBtn)//Insert button
-  const inputEditTask = document.createElement("input")//Create input to edit
+  // Create task item (li)
+  const newLi = document.createElement("li");
+  newLi.textContent = inputEx.value;
+
+  // Create Edit button
+  const newEditBtn = document.createElement("button");
+  newEditBtn.textContent = "✏️";
+
+  // Create Remove button
+  const newRemoveBtn = document.createElement("button");
+  newRemoveBtn.textContent = "❌";
+
+  // Append buttons inside the list item
+  newLi.append(newEditBtn, newRemoveBtn);
+  list.append(newLi); // Add task to the list
+
+  // **EDIT BUTTON FUNCTIONALITY**
   newEditBtn.addEventListener("click", () => {
-    inputEditTask.value = inputEx.value //The input shows the previous text
-    newLi.replaceWith(inputEditTask)
-    newEditBtn.replaceWith(finishEditBtn)
+    const inputEditTask = document.createElement("input");
+    inputEditTask.type = "text";
+    inputEditTask.value = newLi.childNodes[0].nodeValue; // Set input value to current task text
 
-    console.log("inputEditTask: " + inputEditTask.value)
-    console.log("inputEx.value: " + inputEx.value)
-    // console.log("newLi: " + newLi.value)
+    // Create "Finish Edit" button
+    const finishEditBtn = document.createElement("button");
+    finishEditBtn.textContent = "✅";
 
-  })
+    // Replace task text with input field & finish button
+    newLi.textContent = "";
+    newLi.append(inputEditTask, finishEditBtn, newRemoveBtn);
 
-  // Finish edit task button
-  const finishEditBtn = document.createElement("button") //Create
-  finishEditBtn.textContent = "✅" // Edit
-  finishEditBtn.addEventListener("click", (e) => { //Switches the finish btn for the edit btn
-    newLi.textContent = inputEditTask.value//Edit task
+    inputEditTask.focus(); // Auto-focus input field
 
-    inputEditTask.replaceWith(newLi)
-    finishEditBtn.replaceWith(newEditBtn)
-  })
+    // **Finish Editing**
+    finishEditBtn.addEventListener("click", () => {
+      newLi.textContent = inputEditTask.value; // Update task text
+      newLi.append(newEditBtn, newRemoveBtn); // Restore buttons
+    });
+  });
 
-  // Remove task button
-  const newRemoveBtn = document.createElement("button")//Create
-  newRemoveBtn.textContent = "❌" //Edit
-  list.append(newRemoveBtn)//Insert
-  newRemoveBtn.addEventListener("click", (e) => { //Removes all items.
-    newLi.remove()
-    inputEditTask.remove()
-    newEditBtn.remove()
-    newRemoveBtn.remove()
-    finishEditBtn.remove()
-  })
-})
+  // **REMOVE BUTTON FUNCTIONALITY**
+  newRemoveBtn.addEventListener("click", () => {
+    newLi.remove(); // Remove task
+  });
+});
