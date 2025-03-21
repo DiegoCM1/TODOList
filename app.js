@@ -122,8 +122,12 @@ formEx.addEventListener("submit", (e) => {
   const newRemoveBtn = document.createElement("button");
   newRemoveBtn.textContent = "❌";
 
+  // Create Check button
+  const newCheckBtn = document.createElement("button");
+  newCheckBtn.textContent = "✅"
+
   // Append buttons inside the list item
-  newLi.append(newEditBtn, newRemoveBtn);
+  newLi.append(newEditBtn, newRemoveBtn, newCheckBtn);
   list.append(newLi); // Add task to the list
 
   // **EDIT BUTTON FUNCTIONALITY**
@@ -134,7 +138,7 @@ formEx.addEventListener("submit", (e) => {
 
     // Create "Finish Edit" button
     const finishEditBtn = document.createElement("button");
-    finishEditBtn.textContent = "✅";
+    finishEditBtn.textContent = "✔️";
 
     // Replace task text with input field & finish button
     newLi.textContent = "";
@@ -153,6 +157,12 @@ formEx.addEventListener("submit", (e) => {
   newRemoveBtn.addEventListener("click", () => {
     newLi.remove(); // Remove task
   });
+
+
+  // **CHECK BUTTON FUNCTIONALITY**
+  newCheckBtn.addEventListener("click", () => {
+    newLi.classList.toggle("checked")
+  })
 
 
   // Input is deleted after adding the task

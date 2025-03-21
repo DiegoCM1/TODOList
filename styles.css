@@ -99,3 +99,9 @@ nav{
 .newLi:hover {
     background: #f0f0f0;
 }
+
+
+.checked{
+    text-decoration: line-through;
+    background: #838383;
+}
