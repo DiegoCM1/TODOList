@@ -68,3 +68,34 @@ nav{
     margin-top: 50px;
     margin-bottom: 50px;
 }
+
+
+/* FORM */
+.form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;}
+
+
+/* List */
+.newLi {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    margin: 8px 0;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    transition: all 0.3s ease-in-out;
+    border: gray solid 1px;
+    width: 100%;
+}
+
+.newLi:hover {
+    background: #f0f0f0;
+}

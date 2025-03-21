@@ -111,6 +111,7 @@ formEx.addEventListener("submit", (e) => {
 
   // Create task item (li)
   const newLi = document.createElement("li");
+  newLi.classList.add("newLi"); //Adds a CSS class
   newLi.textContent = inputEx.value;
 
   // Create Edit button
@@ -152,4 +153,8 @@ formEx.addEventListener("submit", (e) => {
   newRemoveBtn.addEventListener("click", () => {
     newLi.remove(); // Remove task
   });
+
+
+  // Input is deleted after adding the task
+  inputEx.value = ""
 });
