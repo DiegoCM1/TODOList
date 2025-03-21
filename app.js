@@ -115,34 +115,35 @@ formEx.addEventListener("submit", (e) => {
   const newEditBtn = document.createElement("button")//Create button
   newEditBtn.textContent = "✏️" //Edit button
   list.append(newEditBtn)//Insert button
-  const inputInsideNewList = document.createElement("input")//Create input to edit
+  const inputEditTask = document.createElement("input")//Create input to edit
   newEditBtn.addEventListener("click", () => {
-    inputInsideNewList.textContent = inputEx.value //The input shows the previous text
-    console.log(inputEx.value)
-    newLi.replaceWith(inputInsideNewList)
-
+    inputEditTask.value = inputEx.value //The input shows the previous text
+    newLi.replaceWith(inputEditTask)
     newEditBtn.replaceWith(finishEditBtn)
 
+    console.log("inputEditTask: " + inputEditTask.value)
+    console.log("inputEx.value: " + inputEx.value)
+    // console.log("newLi: " + newLi.value)
+
   })
 
+  // Finish edit task button
+  const finishEditBtn = document.createElement("button") //Create
+  finishEditBtn.textContent = "✅" // Edit
+  finishEditBtn.addEventListener("click", (e) => { //Switches the finish btn for the edit btn
+    newLi.textContent = inputEditTask.value//Edit task
 
-  // Finish edit button
-  const finishEditBtn = document.createElement("button") //Create button
-  finishEditBtn.textContent = "✅" // Edit content
-  finishEditBtn.addEventListener("click", (e) => {
-    inputInsideNewList.replaceWith(newLi)
+    inputEditTask.replaceWith(newLi)
     finishEditBtn.replaceWith(newEditBtn)
-
   })
-
 
   // Remove task button
-  const newRemoveBtn = document.createElement("button")//Create button
-  newRemoveBtn.textContent = "❌" //Edit button
-  list.append(newRemoveBtn)//Insert button
-  newRemoveBtn.addEventListener("click", (e) => {
+  const newRemoveBtn = document.createElement("button")//Create
+  newRemoveBtn.textContent = "❌" //Edit
+  list.append(newRemoveBtn)//Insert
+  newRemoveBtn.addEventListener("click", (e) => { //Removes all items.
     newLi.remove()
-    inputInsideNewList.remove()
+    inputEditTask.remove()
     newEditBtn.remove()
     newRemoveBtn.remove()
     finishEditBtn.remove()
