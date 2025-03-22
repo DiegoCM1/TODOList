@@ -55,6 +55,27 @@
     <!-- Daily List of Tasks -->
     <section class="List" id="dailyList">
 
+        <!-- Menu of actions -->
+        <div class="menuActions">
+            <h2>Daily list</h2>
+            <div>
+                <button>
+                    <i data-lucide="arrow-down-up"></i>
+                </button>
+                <button>
+                    <i data-lucide="sliders-horizontal"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Form to add tasks -->
+        <form id="task-form-daily" class="form">
+            <input type="text" id="task-input" placeholder="Enter a task..." required />
+            <button type="submit">Add Task</button>
+        </form>
+
+        <ul id="task-list-daily"></ul>
+
     </section>
 
 
