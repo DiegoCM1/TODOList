@@ -1,14 +1,27 @@
-//Sections
+//Logic for showing sections lists
 const starredList = document.querySelector("#starredList"); // Select the starred list section
 const dailyList = document.querySelector("#dailyList"); // Select the daily list section
 dailyList.style.display = "none"; // Hide the daily list at the beginning
 const newList = document.querySelector("#newList"); // Select the new list section
 newList.style.display = "none"; // Hide the new list at the beginning
 
-//Logic for showing sections lists
 const starredListButton = document.querySelector("#starredListButton"); // Select the button to show the starred list
 const dailyListButton = document.querySelector("#dailyListButton"); // Select the button to show the daily list
 const newListButton = document.querySelector("#newListButton"); // Select the button to show the new list
+
+//Select the nav
+const nav = document.querySelector("nav");
+//Add event listener to the parent/nav
+nav.addEventListener("click", (event) => {
+  //Function to show the correct section
+  if (event.target.closest("#starredListButton")) {
+    showStarredList(event);
+  } else if (event.target.id === "dailyListButton") {
+    showDailyList(event);
+  } else if (event.target.id === "newListButton") {
+    showNewList(event);
+  }
+});
 
 const showStarredList = (event) => {
   // Function to show the starred list
@@ -52,11 +65,6 @@ const showNewList = (event) => {
   }
 };
 
-// Add event listeners to buttons to switch between sections
-starredListButton.addEventListener("click", showStarredList); // Add event listener to the starred list button
-dailyListButton.addEventListener("click", showDailyList); // Add event listener to the daily list button
-newListButton.addEventListener("click", showNewList); // Add event listener to the new list button
-
 // Show the starred list by default when the page loads
 document.addEventListener("DOMContentLoaded", () => {
   showStarredList({ target: starredListButton }); // Simulate the event with the button as the target
@@ -81,16 +89,15 @@ function setUpTaskManager(formSelector, listSelector) {
     // Create buttons for editing, removing, and checking tasks
     const newEditBtn = document.createElement("button");
     newEditBtn.textContent = "✏️"; // Edit button
-    newEditBtn.classList.add("btnEdit")
+    newEditBtn.classList.add("btnEdit");
 
     const newRemoveBtn = document.createElement("button");
     newRemoveBtn.textContent = "❌"; // Remove button
-    newRemoveBtn.classList.add("btnRemove")
-    
+    newRemoveBtn.classList.add("btnRemove");
+
     const newCheckBtn = document.createElement("button");
     newCheckBtn.textContent = "✅"; // Check button
-    newCheckBtn.classList.add("btnCheck")
-
+    newCheckBtn.classList.add("btnCheck");
 
     // Append the buttons to the list item
     newLi.append(newEditBtn, newRemoveBtn, newCheckBtn);
@@ -99,15 +106,16 @@ function setUpTaskManager(formSelector, listSelector) {
     // Event Delegation with the parent container
     newLi.addEventListener("click", (event) => {
       if (event.target.classList.contains("btnEdit")) {
-        editTask(event)
+        editTask(event);
       } else if (event.target.classList.contains("btnRemove")) {
-        removeTask(event)
+        removeTask(event);
       } else if (event.target.classList.contains("btnCheck")) {
-        checkTask(event)
-      } 
+        checkTask(event);
+      }
     });
 
-    function editTask(){ // Edits task
+    function editTask() {
+      // Edits task
       const inputEditTask = document.createElement("input"); // Create an input field for editing
       inputEditTask.type = "text"; // Set the input type to text
       inputEditTask.value = newLi.childNodes[0].nodeValue; // Set the input value to the current task text
@@ -127,11 +135,13 @@ function setUpTaskManager(formSelector, listSelector) {
       });
     }
 
-    function removeTask(){ // Removes task
+    function removeTask() {
+      // Removes task
       newLi.remove(); // Remove the list item
     }
 
-    function checkTask(){ //Checks the task
+    function checkTask() {
+      //Checks the task
       newLi.classList.toggle("checked"); // Toggle the "checked" class on the list item
       newLi.classList.remove("newLi:hover"); // Remove hover effect when checked
     }
