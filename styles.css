@@ -116,3 +116,46 @@ ul {
     text-decoration: line-through;
     background: #838383;
 }
+
+
+
+/* Edit button (light gray) */
+.btnEdit {
+    background-color: #d3d3d3; /* Light gray */
+    color: black;
+}
+
+.btnEdit:hover {
+    background-color: #b0b0b0;
+}
+
+/* Finish Edit button (white with black border) */
+.btnFinishEdit {
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+}
+
+.btnFinishEdit:hover {
+    background-color: #f0f0f0;
+}
+
+/* Remove button (dark gray, strong contrast) */
+.btnRemove {
+    background-color: #222; /* Almost black */
+    color: white;
+}
+
+.btnRemove:hover {
+    background-color: #444;
+}
+
+/* Check button (medium gray, neutral) */
+.btnCheck {
+    background-color: #777; /* Medium gray */
+    color: white;
+}
+
+.btnCheck:hover {
+    background-color: #555;
+}
