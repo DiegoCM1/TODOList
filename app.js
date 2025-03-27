@@ -94,9 +94,14 @@ function setUpTaskManager(formSelector, listSelector) {
 
     const newLi = document.createElement("li"); // Create a new list item
     newLi.classList.add("newLi"); // Add a class to the list item
-    newLi.textContent = inputEx.value; // Set the text of the list item
 
-    // Create buttons for editing, removing, and checking tasks
+    const newLiText = document.createElement("span")
+    newLiText.textContent = inputEx.value; // Assign the input value
+    newLiText.classList.add("newLiText"); // Add a class to the text
+    
+
+    // Create buttons for editing, removing, and checking tasks as well as their container
+
     const newEditBtn = document.createElement("button");
     newEditBtn.textContent = "✏️"; // Edit button
     newEditBtn.classList.add("btnEdit");
@@ -109,8 +114,13 @@ function setUpTaskManager(formSelector, listSelector) {
     newCheckBtn.textContent = "✅"; // Check button
     newCheckBtn.classList.add("btnCheck");
 
-    // Append the buttons to the list item
-    newLi.append(newEditBtn, newRemoveBtn, newCheckBtn);
+    const buttonsContainer = document.createElement("div");
+    buttonsContainer.classList.add("btnsContainer") // Div that contains all buttons
+    buttonsContainer.append(newEditBtn, newRemoveBtn, newCheckBtn)
+
+
+    // Append the div that contains all buttons
+    newLi.append(newLiText, buttonsContainer);
     list.append(newLi); // Add the list item to the list
 
     // Add event listener to handle button actions
@@ -152,7 +162,7 @@ function setUpTaskManager(formSelector, listSelector) {
 
     // Function to check/uncheck a task
     function checkTask() {
-      newLi.classList.toggle("checked"); // Toggle the "checked" class
+      newLiText.classList.toggle("checked"); // Toggle the "checked" class
       newLi.classList.remove("newLi:hover"); // Remove hover effect when checked
     }
 

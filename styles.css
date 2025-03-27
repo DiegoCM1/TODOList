@@ -82,11 +82,13 @@ nav{
 ul {
     margin: 0;
     padding: 0;
-    list-style: none; 
+    list-style: none;
+    text-wrap: wrap; 
     display: flex;
     flex-direction: column;
     align-items: center;
     height: auto;
+    overflow-x: hidden; /* Prevents horizontal scroll */
 }
 
 
@@ -104,20 +106,31 @@ ul {
     color: #333;
     transition: all 0.3s ease-in-out;
     border: gray solid 1px;
-    width: 100%;
+    width: 70vw;
 }
 
 .newLi:hover {
     background: #f0f0f0;
 }
 
-
-.checked{
-    text-decoration: line-through;
-    background: #838383;
+.newLiText{
+    word-wrap: break-word; /* For legacy support */
+    overflow-wrap: break-word; /* Modern way */
+    white-space: normal; /* Allows text to wrap */
+    width: 40vw;
 }
 
 
+.checked{
+    text-decoration: line-through;
+}
+
+
+.btnsContainer{
+    display: flex;
+    justify-content: flex-end;
+    border: red 1px solid;
+}
 
 /* Edit button (light gray) */
 .btnEdit {
