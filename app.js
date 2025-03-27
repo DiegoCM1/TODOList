@@ -122,6 +122,7 @@ function setUpTaskManager(formSelector, listSelector) {
     // Append the div that contains all buttons
     newLi.append(newLiText, buttonsContainer);
     list.append(newLi); // Add the list item to the list
+    console.log(buttonsContainer)
 
     // Add event listener to handle button actions
     newLi.addEventListener("click", (event) => {
@@ -137,22 +138,37 @@ function setUpTaskManager(formSelector, listSelector) {
     // Function to edit a task
     function editTask() {
       const inputEditTask = document.createElement("input"); // Create an input field for editing
+      inputEditTask.classList.add("inputEditTask")
       inputEditTask.type = "text"; // Set input type to text
-      inputEditTask.value = newLi.childNodes[0].nodeValue; // Set input value to current task text
+      inputEditTask.value = newLiText.childNodes[0].nodeValue; // Set input value to current to current task
 
       const finishEditBtn = document.createElement("button"); // Create a button to finish editing
-      finishEditBtn.textContent = "✔️"; // Finish edit button text
+      finishEditBtn.textContent = "✔️";
+
+      const finishRemoveBtn = document.createElement("button"); // Create a button to remove
+      finishRemoveBtn.textContent = "❌";
+
+      const editButtonsContainer = document.createElement("div")
+      editButtonsContainer.classList.add("buttonsContainer")
+      editButtonsContainer.append(finishEditBtn, finishRemoveBtn)
 
       newLi.textContent = ""; // Clear the list item content
-      newLi.append(inputEditTask, finishEditBtn, newRemoveBtn); // Add input and buttons to the list item
+      newLi.append(inputEditTask, editButtonsContainer); // Add input and buttons to the list item
 
       inputEditTask.focus(); // Focus on the input field
 
       // Add functionality to finish editing
       finishEditBtn.addEventListener("click", () => {
-        newLi.textContent = inputEditTask.value; // Update list item text
-        newLi.append(newEditBtn, newRemoveBtn, newCheckBtn); // Restore original buttons
+        newLiText.textContent = inputEditTask.value; // Update list item text
+        newLi.textContent = "";
+        newLi.append(newLiText, buttonsContainer); // Restore original buttons
+        console.log(buttonsContainer)
       });
+
+      finishRemoveBtn.addEventListener("click", () => {
+        newLi.remove();
+      })
+
     }
 
     // Function to remove a task
