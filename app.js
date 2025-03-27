@@ -1,19 +1,35 @@
-//Logic for showing sections lists
-const starredList = document.querySelector("#starredList"); // Select the starred list section
-const dailyList = document.querySelector("#dailyList"); // Select the daily list section
-dailyList.style.display = "none"; // Hide the daily list at the beginning
-const newList = document.querySelector("#newList"); // Select the new list section
-newList.style.display = "none"; // Hide the new list at the beginning
+function setFavicon(url) {
+  let link = document.querySelector("link[rel*='icon']") || document.createElement("link");
+  link.rel = "icon";
+  link.type = "image/png";  // Make sure type matches your file format
+  link.href = url;
+  document.head.appendChild(link);
+}
 
-const starredListButton = document.querySelector("#starredListButton"); // Select the button to show the starred list
-const dailyListButton = document.querySelector("#dailyListButton"); // Select the button to show the daily list
-const newListButton = document.querySelector("#newListButton"); // Select the button to show the new list
+// Example: Set favicon on page load
+setFavicon("/TODOList/assets/favicon.png");
 
-//Select the nav
+
+
+
+// Select the sections for the lists
+const starredList = document.querySelector("#starredList"); // Starred list section
+const dailyList = document.querySelector("#dailyList"); // Daily list section
+dailyList.style.display = "none"; // Initially hide the daily list
+const newList = document.querySelector("#newList"); // New list section
+newList.style.display = "none"; // Initially hide the new list
+
+// Select the buttons for switching between lists
+const starredListButton = document.querySelector("#starredListButton"); // Button for starred list
+const dailyListButton = document.querySelector("#dailyListButton"); // Button for daily list
+const newListButton = document.querySelector("#newListButton"); // Button for new list
+
+// Select the navigation container
 const nav = document.querySelector("nav");
-//Add event listener to the parent/nav
+
+// Add event listener to the navigation container
 nav.addEventListener("click", (event) => {
-  //Function to show the correct section
+  // Determine which button was clicked and show the corresponding list
   if (event.target.closest("#starredListButton")) {
     showStarredList(event);
   } else if (event.target.id === "dailyListButton") {
@@ -23,68 +39,62 @@ nav.addEventListener("click", (event) => {
   }
 });
 
+// Function to show the starred list
 const showStarredList = (event) => {
-  // Function to show the starred list
   starredList.style.display = "flex"; // Show the starred list
   dailyList.style.display = "none"; // Hide the daily list
   newList.style.display = "none"; // Hide the new list
 
-  // Highlight the selected button and remove highlight from others
-  if ((event.target.style.display = "flex")) {
-    event.target.closest("button").classList.add("selectedBtnNav");
-    dailyListButton.classList.remove("selectedBtnNav");
-    newListButton.classList.remove("selectedBtnNav");
-  }
+  // Highlight the selected button and remove highlights from others
+  event.target.closest("button").classList.add("selectedBtnNav");
+  dailyListButton.classList.remove("selectedBtnNav");
+  newListButton.classList.remove("selectedBtnNav");
 };
 
+// Function to show the daily list
 const showDailyList = (event) => {
-  // Function to show the daily list
   starredList.style.display = "none"; // Hide the starred list
   dailyList.style.display = "flex"; // Show the daily list
   newList.style.display = "none"; // Hide the new list
 
-  // Highlight the selected button and remove highlight from others
-  if ((event.target.style.display = "flex")) {
-    event.target.classList.add("selectedBtnNav");
-    starredListButton.classList.remove("selectedBtnNav");
-    newListButton.classList.remove("selectedBtnNav");
-  }
+  // Highlight the selected button and remove highlights from others
+  event.target.classList.add("selectedBtnNav");
+  starredListButton.classList.remove("selectedBtnNav");
+  newListButton.classList.remove("selectedBtnNav");
 };
 
+// Function to show the new list
 const showNewList = (event) => {
-  // Function to show the new list
   starredList.style.display = "none"; // Hide the starred list
   dailyList.style.display = "none"; // Hide the daily list
   newList.style.display = "flex"; // Show the new list
 
-  // Highlight the selected button and remove highlight from others
-  if ((event.target.style.display = "flex")) {
-    event.target.classList.add("selectedBtnNav");
-    starredListButton.classList.remove("selectedBtnNav");
-    dailyListButton.classList.remove("selectedBtnNav");
-  }
+  // Highlight the selected button and remove highlights from others
+  event.target.classList.add("selectedBtnNav");
+  starredListButton.classList.remove("selectedBtnNav");
+  dailyListButton.classList.remove("selectedBtnNav");
 };
 
 // Show the starred list by default when the page loads
 document.addEventListener("DOMContentLoaded", () => {
-  showStarredList({ target: starredListButton }); // Simulate the event with the button as the target
+  showStarredList({ target: starredListButton }); // Simulate a click on the starred list button
 });
 
-//STARTS THE WEBAPP
+// Function to set up task management for a specific form and list
 function setUpTaskManager(formSelector, listSelector) {
-  // Function to set up task management for a specific form and list
-  const formEx = document.querySelector(formSelector); // Select the form element
-  const list = document.querySelector(listSelector); // Select the list element
+  const formEx = document.querySelector(formSelector); // Select the form
+  const list = document.querySelector(listSelector); // Select the list
 
+  // Add event listener for form submission
   formEx.addEventListener("submit", (e) => {
-    e.preventDefault(); // Prevent the form from reloading the page
-    const inputEx = formEx.querySelector("input"); // Select the input field inside the form
+    e.preventDefault(); // Prevent page reload on form submission
+    const inputEx = formEx.querySelector("input"); // Select the input field
 
-    if (inputEx.value.trim() === "") return; // Do nothing if the input is empty
+    if (inputEx.value.trim() === "") return; // Do nothing if input is empty
 
     const newLi = document.createElement("li"); // Create a new list item
     newLi.classList.add("newLi"); // Add a class to the list item
-    newLi.textContent = inputEx.value; // Set the text of the list item to the input value
+    newLi.textContent = inputEx.value; // Set the text of the list item
 
     // Create buttons for editing, removing, and checking tasks
     const newEditBtn = document.createElement("button");
@@ -103,46 +113,46 @@ function setUpTaskManager(formSelector, listSelector) {
     newLi.append(newEditBtn, newRemoveBtn, newCheckBtn);
     list.append(newLi); // Add the list item to the list
 
-    // Event Delegation with the parent container
+    // Add event listener to handle button actions
     newLi.addEventListener("click", (event) => {
       if (event.target.classList.contains("btnEdit")) {
-        editTask(event);
+        editTask(event); // Call editTask function
       } else if (event.target.classList.contains("btnRemove")) {
-        removeTask(event);
+        removeTask(event); // Call removeTask function
       } else if (event.target.classList.contains("btnCheck")) {
-        checkTask(event);
+        checkTask(event); // Call checkTask function
       }
     });
 
+    // Function to edit a task
     function editTask() {
-      // Edits task
       const inputEditTask = document.createElement("input"); // Create an input field for editing
-      inputEditTask.type = "text"; // Set the input type to text
-      inputEditTask.value = newLi.childNodes[0].nodeValue; // Set the input value to the current task text
+      inputEditTask.type = "text"; // Set input type to text
+      inputEditTask.value = newLi.childNodes[0].nodeValue; // Set input value to current task text
 
       const finishEditBtn = document.createElement("button"); // Create a button to finish editing
       finishEditBtn.textContent = "✔️"; // Finish edit button text
 
       newLi.textContent = ""; // Clear the list item content
-      newLi.append(inputEditTask, finishEditBtn, newRemoveBtn); // Add the input and buttons to the list item
+      newLi.append(inputEditTask, finishEditBtn, newRemoveBtn); // Add input and buttons to the list item
 
       inputEditTask.focus(); // Focus on the input field
 
-      // Add functionality to the finish edit button
+      // Add functionality to finish editing
       finishEditBtn.addEventListener("click", () => {
-        newLi.textContent = inputEditTask.value; // Update the list item text with the input value
-        newLi.append(newEditBtn, newRemoveBtn, newCheckBtn); // Restore the original buttons
+        newLi.textContent = inputEditTask.value; // Update list item text
+        newLi.append(newEditBtn, newRemoveBtn, newCheckBtn); // Restore original buttons
       });
     }
 
+    // Function to remove a task
     function removeTask() {
-      // Removes task
       newLi.remove(); // Remove the list item
     }
 
+    // Function to check/uncheck a task
     function checkTask() {
-      //Checks the task
-      newLi.classList.toggle("checked"); // Toggle the "checked" class on the list item
+      newLi.classList.toggle("checked"); // Toggle the "checked" class
       newLi.classList.remove("newLi:hover"); // Remove hover effect when checked
     }
 
