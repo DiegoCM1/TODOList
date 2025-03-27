@@ -24,6 +24,28 @@ const starredListButton = document.querySelector("#starredListButton"); // Butto
 const dailyListButton = document.querySelector("#dailyListButton"); // Button for daily list
 const newListButton = document.querySelector("#newListButton"); // Button for new list
 
+
+// Settings section
+const menuBtn = document.querySelector("#menuBtn") //Btn
+const menu = document.querySelector("#menu") // Menu
+const closeMenuBtn = document.querySelector("#closeMenuBtn") //Close menu
+
+
+
+menuBtn.addEventListener("click", () => {
+  console.log("Button clicked")
+  menu.classList.add("active")
+  console.log(menu.classList)
+})
+
+closeMenuBtn.addEventListener("click", closeMenu)
+
+function closeMenu(){ // Function to close menu
+  menu.classList.remove("active")
+}
+
+
+
 // Select the navigation container
 const nav = document.querySelector("nav");
 

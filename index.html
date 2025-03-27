@@ -7,12 +7,43 @@
     <title>Simple To-do List</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" href="/TODOList/assets/favicon.png">
-    
+
 </head>
 
 <body>
     <header class="header">
-        <H1 class="h1">Tasks</H1>
+        <div class="titleSettingsContainer">
+            <a class="menuBtn" id="menuBtn">
+                <i data-lucide="align-justify"></i>
+            </a>
+
+            <H1 class="h1">Tasks</H1>
+        </div>
+
+        <!-- Menu shit -->
+        <div id="menu" class="menu">
+            <button id="closeMenuBtn">
+                <i data-lucide="align-justify"></i>
+            </button>
+            <ul id="menuOptions">
+                <li class="menuOption">
+                    <span> <i data-lucide="moon"></i>
+                    </span>
+                    Theme
+                </li>
+                <li class="menuOption">
+                    <span> <i data-lucide="circle-user-round"></i>
+                    </span>
+                    Account                
+                </li>
+                <li class="menuOption">
+                    <span> <i data-lucide="log-out"></i>
+                    </span>
+                    Logout                
+                </li>
+            </ul>
+        </div>
+
 
         <nav class="nav">
             <button id="starredListButton" class="buttonNav"> <!--Button to show starred tasks-->
@@ -29,65 +60,66 @@
 
     <main>
         <!-- Starred List of Tasks -->
-    <section class="List" id="starredList">
-        <!-- Menu of actions -->
-        <div class="menuActions">
-            <h2>Starred</h2>
-            <div>
-                <button>
-                    <i data-lucide="arrow-down-up"></i>
-                </button>
-                <button>
-                    <i data-lucide="sliders-horizontal"></i>
-                </button>
+        <section class="List" id="starredList">
+            <!-- Menu of actions -->
+            <div class="menuActions">
+                <h2>Starred</h2>
+                <div>
+                    <button>
+                        <i data-lucide="arrow-down-up"></i>
+                    </button>
+                    <button>
+                        <i data-lucide="sliders-horizontal"></i>
+                    </button>
+                </div>
             </div>
-        </div>
 
-        <!-- Form to add tasks -->
-        <form id="task-form" class="form">
-            <input type="text" id="task-input" placeholder="Enter a task..." required />
-            <button type="submit">Add Task</button>
-        </form>
+            <!-- Form to add tasks -->
+            <form id="task-form" class="form">
+                <input type="text" id="task-input" placeholder="Enter a task..." required />
+                <button type="submit">Add Task</button>
+            </form>
 
-        <ul id="task-list"></ul>
+            <ul id="task-list" class="ulList"></ul>
 
-    </section>
+        </section>
 
 
-    <!-- Daily List of Tasks -->
-    <section class="List" id="dailyList">
+        <!-- Daily List of Tasks -->
+        <section class="List" id="dailyList">
 
-        <!-- Menu of actions -->
-        <div class="menuActions">
-            <h2>Daily list</h2>
-            <div>
-                <button>
-                    <i data-lucide="arrow-down-up"></i>
-                </button>
-                <button>
-                    <i data-lucide="sliders-horizontal"></i>
-                </button>
+            <!-- Menu of actions -->
+            <div class="menuActions">
+                <h2>Daily list</h2>
+                <div>
+                    <button>
+                        <i data-lucide="arrow-down-up"></i>
+                    </button>
+                    <button>
+                        <i data-lucide="sliders-horizontal"></i>
+                    </button>
+                </div>
             </div>
-        </div>
 
-        <!-- Form to add tasks -->
-        <form id="task-form-daily" class="form">
-            <input type="text" id="task-input" placeholder="Enter a task..." required />
-            <button type="submit">Add Task</button>
-        </form>
+            <!-- Form to add tasks -->
+            <form id="task-form-daily" class="form">
+                <input type="text" id="task-input" placeholder="Enter a task..." required />
+                <button type="submit">Add Task</button>
+            </form>
 
-        <ul id="task-list-daily"></ul>
+            <ul id="task-list-daily" class="ulList"></ul>
 
-    </section>
+        </section>
 
 
-    <!-- New List of Tasks -->
-    <section class="List" id="newList">
+        <!-- New List of Tasks -->
+        <section class="List" id="newList">
 
-    </section>
+        </section>
+
     </main>
 
-    
+
 
 
 
