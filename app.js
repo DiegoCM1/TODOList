@@ -33,9 +33,7 @@ const closeMenuBtn = document.querySelector("#closeMenuBtn") //Close menu
 
 
 menuBtn.addEventListener("click", () => {
-  console.log("Button clicked")
   menu.classList.add("active")
-  console.log(menu.classList)
 })
 
 closeMenuBtn.addEventListener("click", closeMenu)
@@ -144,7 +142,6 @@ function setUpTaskManager(formSelector, listSelector) {
     // Append the div that contains all buttons
     newLi.append(newLiText, buttonsContainer);
     list.append(newLi); // Add the list item to the list
-    console.log(buttonsContainer)
 
     // Add event listener to handle button actions
     newLi.addEventListener("click", (event) => {
@@ -184,7 +181,6 @@ function setUpTaskManager(formSelector, listSelector) {
         newLiText.textContent = inputEditTask.value; // Update list item text
         newLi.textContent = "";
         newLi.append(newLiText, buttonsContainer); // Restore original buttons
-        console.log(buttonsContainer)
       });
 
       finishRemoveBtn.addEventListener("click", () => {
