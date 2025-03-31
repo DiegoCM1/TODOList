@@ -167,21 +167,23 @@ function setUpTaskManager(formSelector, listSelector) {
 
       // Create a button to finish editing and its icon
       const finishEditBtn = document.createElement("button");
-      // finishEditBtn.textContent = "✔️";
+      finishEditBtn.classList.add("btnFinishEdit")
       const checkIcon = document.createElement("i");
       checkIcon.setAttribute("data-lucide", "check");
+      checkIcon.classList.add("iconFinishEdit")
       finishEditBtn.appendChild(checkIcon);
 
-      // Create a button to remove
-      const finishRemoveBtn = document.createElement("button");
-      // finishRemoveBtn.textContent = "❌";
-      const finishRemoveIcon = document.createElement("i");
-      finishRemoveIcon.setAttribute("data-lucide", "x");
-      finishRemoveBtn.appendChild(finishRemoveIcon);
+      // Create a button to cancel edition
+      const cancelEditionBtn = document.createElement("button");
+      const cancelEditionIcon = document.createElement("i");
+      cancelEditionBtn.classList.add("cancelEditionBtn")
+      cancelEditionIcon.setAttribute("data-lucide", "x");
+      cancelEditionIcon.classList.add("iconFinishRemove")
+      cancelEditionBtn.appendChild(cancelEditionIcon);
 
       const editButtonsContainer = document.createElement("div");
       editButtonsContainer.classList.add("buttonsContainer");
-      editButtonsContainer.append(finishEditBtn, finishRemoveBtn);
+      editButtonsContainer.append(finishEditBtn, cancelEditionBtn);
 
       newLi.textContent = ""; // Clear the list item content
       newLi.append(inputEditTask, editButtonsContainer); // Add input and buttons to the list item
@@ -195,8 +197,9 @@ function setUpTaskManager(formSelector, listSelector) {
         newLi.append(newLiText, buttonsContainer); // Restore original buttons
       });
 
-      finishRemoveBtn.addEventListener("click", () => {
-        newLi.remove();
+      cancelEditionBtn.addEventListener("click", () => {
+        newLi.textContent = "";
+        newLi.append(newLiText, buttonsContainer); // Restore original buttons
       });
 
       // Re-initialize Lucide icons after adding them to the DOM
