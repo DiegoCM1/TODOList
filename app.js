@@ -119,6 +119,7 @@ function setUpTaskManager(formSelector, listSelector) {
     newEditBtn.classList.add("btnEdit");
     const newEditIcon = document.createElement("i");
     newEditIcon.setAttribute("data-lucide", "pencil");
+    newEditIcon.classList.add("iconEdit")
     newEditBtn.appendChild(newEditIcon);
 
 
@@ -126,12 +127,14 @@ function setUpTaskManager(formSelector, listSelector) {
     newRemoveBtn.classList.add("btnRemove");
     const newRemoveIcon = document.createElement("i")
     newRemoveIcon.setAttribute("data-lucide", "trash")
+    newRemoveIcon.classList.add("iconRemove")
     newRemoveBtn.appendChild(newRemoveIcon)
 
     const newCheckBtn = document.createElement("button");
     newCheckBtn.classList.add("btnCheck");
     const newCheckIcon = document.createElement("i")
     newCheckIcon.setAttribute("data-lucide", "check")
+    newCheckIcon.classList.add("iconCheck")
     newCheckBtn.appendChild(newCheckIcon)
 
     const buttonsContainer = document.createElement("div");
@@ -142,14 +145,16 @@ function setUpTaskManager(formSelector, listSelector) {
     newLi.append(newLiText, buttonsContainer);
     list.append(newLi); // Add the list item to the list
 
-    // Add event listener to handle button actions
-    newLi.addEventListener("click", (event) => {
-      if (event.target.classList.contains("btnEdit")) {
-        editTask(event); // Call editTask function
-      } else if (event.target.classList.contains("btnRemove")) {
-        removeTask(event); // Call removeTask function
-      } else if (event.target.classList.contains("btnCheck")) {
-        checkTask(event); // Call checkTask function
+    buttonsContainer.addEventListener("click", (event) => {
+      const button = event.target.closest("button"); // Get the closest button (even if clicking the icon)
+      if (!button) return; // Ignore clicks outside buttons
+    
+      if (button.classList.contains("btnEdit")) {
+        editTask(newLi, newLiText, buttonsContainer); // Pass the necessary elements
+      } else if (button.classList.contains("btnRemove")) {
+        removeTask();
+      } else if (button.classList.contains("btnCheck")) {
+        checkTask()
       }
     });
 
@@ -206,7 +211,7 @@ function setUpTaskManager(formSelector, listSelector) {
     // Function to check/uncheck a task
     function checkTask() {
       newLiText.classList.toggle("checked"); // Toggle the "checked" class
-      newLi.classList.remove("newLi:hover"); // Remove hover effect when checked
+      newLi.classList.toggle("checkedNewLi")
     }
 
     inputEx.value = ""; // Clear the input field
