@@ -1,16 +1,15 @@
 function setFavicon(url) {
-  let link = document.querySelector("link[rel*='icon']") || document.createElement("link");
+  let link =
+    document.querySelector("link[rel*='icon']") ||
+    document.createElement("link");
   link.rel = "icon";
-  link.type = "image/png";  // Make sure type matches your file format
+  link.type = "image/png"; // Make sure type matches your file format
   link.href = url;
   document.head.appendChild(link);
 }
 
 // Example: Set favicon on page load
 setFavicon("/TODOList/assets/favicon.png");
-
-
-
 
 // Select the sections for the lists
 const starredList = document.querySelector("#starredList"); // Starred list section
@@ -24,25 +23,21 @@ const starredListButton = document.querySelector("#starredListButton"); // Butto
 const dailyListButton = document.querySelector("#dailyListButton"); // Button for daily list
 const newListButton = document.querySelector("#newListButton"); // Button for new list
 
-
 // Settings section
-const menuBtn = document.querySelector("#menuBtn") //Btn
-const menu = document.querySelector("#menu") // Menu
-const closeMenuBtn = document.querySelector("#closeMenuBtn") //Close menu
-
-
+const menuBtn = document.querySelector("#menuBtn"); //Btn
+const menu = document.querySelector("#menu"); // Menu
+const closeMenuBtn = document.querySelector("#closeMenuBtn"); //Close menu
 
 menuBtn.addEventListener("click", () => {
-  menu.classList.add("active")
-})
+  menu.classList.add("active");
+});
 
-closeMenuBtn.addEventListener("click", closeMenu)
+closeMenuBtn.addEventListener("click", closeMenu);
 
-function closeMenu(){ // Function to close menu
-  menu.classList.remove("active")
+function closeMenu() {
+  // Function to close menu
+  menu.classList.remove("active");
 }
-
-
 
 // Select the navigation container
 const nav = document.querySelector("nav");
@@ -115,29 +110,33 @@ function setUpTaskManager(formSelector, listSelector) {
     const newLi = document.createElement("li"); // Create a new list item
     newLi.classList.add("newLi"); // Add a class to the list item
 
-    const newLiText = document.createElement("span")
+    const newLiText = document.createElement("span");
     newLiText.textContent = inputEx.value; // Assign the input value
     newLiText.classList.add("newLiText"); // Add a class to the text
-    
 
     // Create buttons for editing, removing, and checking tasks as well as their container
-
     const newEditBtn = document.createElement("button");
-    newEditBtn.textContent = "✏️"; // Edit button
     newEditBtn.classList.add("btnEdit");
+    const newEditIcon = document.createElement("i");
+    newEditIcon.setAttribute("data-lucide", "pencil");
+    newEditBtn.appendChild(newEditIcon);
+
 
     const newRemoveBtn = document.createElement("button");
-    newRemoveBtn.textContent = "❌"; // Remove button
     newRemoveBtn.classList.add("btnRemove");
+    const newRemoveIcon = document.createElement("i")
+    newRemoveIcon.setAttribute("data-lucide", "trash")
+    newRemoveBtn.appendChild(newRemoveIcon)
 
     const newCheckBtn = document.createElement("button");
-    newCheckBtn.textContent = "✅"; // Check button
     newCheckBtn.classList.add("btnCheck");
+    const newCheckIcon = document.createElement("i")
+    newCheckIcon.setAttribute("data-lucide", "check")
+    newCheckBtn.appendChild(newCheckIcon)
 
     const buttonsContainer = document.createElement("div");
-    buttonsContainer.classList.add("btnsContainer") // Div that contains all buttons
-    buttonsContainer.append(newEditBtn, newRemoveBtn, newCheckBtn)
-
+    buttonsContainer.classList.add("btnsContainer"); // Div that contains all buttons
+    buttonsContainer.append(newEditBtn, newRemoveBtn, newCheckBtn);
 
     // Append the div that contains all buttons
     newLi.append(newLiText, buttonsContainer);
@@ -157,19 +156,27 @@ function setUpTaskManager(formSelector, listSelector) {
     // Function to edit a task
     function editTask() {
       const inputEditTask = document.createElement("input"); // Create an input field for editing
-      inputEditTask.classList.add("inputEditTask")
+      inputEditTask.classList.add("inputEditTask");
       inputEditTask.type = "text"; // Set input type to text
       inputEditTask.value = newLiText.childNodes[0].nodeValue; // Set input value to current to current task
 
-      const finishEditBtn = document.createElement("button"); // Create a button to finish editing
-      finishEditBtn.textContent = "✔️";
+      // Create a button to finish editing and its icon
+      const finishEditBtn = document.createElement("button");
+      // finishEditBtn.textContent = "✔️";
+      const checkIcon = document.createElement("i");
+      checkIcon.setAttribute("data-lucide", "check");
+      finishEditBtn.appendChild(checkIcon);
 
-      const finishRemoveBtn = document.createElement("button"); // Create a button to remove
-      finishRemoveBtn.textContent = "❌";
+      // Create a button to remove
+      const finishRemoveBtn = document.createElement("button");
+      // finishRemoveBtn.textContent = "❌";
+      const finishRemoveIcon = document.createElement("i");
+      finishRemoveIcon.setAttribute("data-lucide", "x");
+      finishRemoveBtn.appendChild(finishRemoveIcon);
 
-      const editButtonsContainer = document.createElement("div")
-      editButtonsContainer.classList.add("buttonsContainer")
-      editButtonsContainer.append(finishEditBtn, finishRemoveBtn)
+      const editButtonsContainer = document.createElement("div");
+      editButtonsContainer.classList.add("buttonsContainer");
+      editButtonsContainer.append(finishEditBtn, finishRemoveBtn);
 
       newLi.textContent = ""; // Clear the list item content
       newLi.append(inputEditTask, editButtonsContainer); // Add input and buttons to the list item
@@ -185,8 +192,10 @@ function setUpTaskManager(formSelector, listSelector) {
 
       finishRemoveBtn.addEventListener("click", () => {
         newLi.remove();
-      })
+      });
 
+      // Re-initialize Lucide icons after adding them to the DOM
+      lucide.createIcons();
     }
 
     // Function to remove a task
@@ -201,6 +210,9 @@ function setUpTaskManager(formSelector, listSelector) {
     }
 
     inputEx.value = ""; // Clear the input field
+
+    // Re-initialize Lucide icons after adding them to the DOM
+    lucide.createIcons();
   });
 }
 
