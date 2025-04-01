@@ -131,6 +131,9 @@ function setUpTaskManager(formSelector, listSelector) {
       // Generate a task element for each task and append it to the list
       const newTaskElement = createTaskElement(task);
       list.appendChild(newTaskElement);
+
+    // Re-initialize Lucide icons after adding them to the DOM
+    lucide.createIcons();
     });
   }
 
