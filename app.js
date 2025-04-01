@@ -11,6 +11,8 @@ function setFavicon(url) {
 // Example: Set favicon on page load
 setFavicon("/TODOList/assets/favicon.png");
 
+
+
 // Select the sections for the lists
 const starredList = document.querySelector("#starredList"); // Starred list section
 const dailyList = document.querySelector("#dailyList"); // Daily list section
@@ -100,128 +102,150 @@ function setUpTaskManager(formSelector, listSelector) {
   const formEx = document.querySelector(formSelector); // Select the form
   const list = document.querySelector(listSelector); // Select the list
 
+  loadTasks(); // Load tasks from localStorage
+
   // Add event listener for form submission
   formEx.addEventListener("submit", (e) => {
     e.preventDefault(); // Prevent page reload on form submission
     const inputEx = formEx.querySelector("input"); // Select the input field
+    let task = inputEx.value;
 
-    if (inputEx.value.trim() === "") return; // Do nothing if input is empty
+    if (task.trim() === "") return; // Do nothing if input is empty
 
-    const newLi = document.createElement("li"); // Create a new list item
-    newLi.classList.add("newLi"); // Add a class to the list item
+    // Store the task in localStorage
+    storeTaskInLocalStorage(task); // Pass the task text to the function
 
-    const newLiText = document.createElement("span");
-    newLiText.textContent = inputEx.value; // Assign the input value
-    newLiText.classList.add("newLiText"); // Add a class to the text
+    // Create and append the new task element
+    const newTaskElement = createTaskElement(task);
+    list.appendChild(newTaskElement);
 
-    // Create buttons for editing, removing, and checking tasks as well as their container
-    const newEditBtn = document.createElement("button");
-    newEditBtn.classList.add("btnEdit");
-    const newEditIcon = document.createElement("i");
-    newEditIcon.setAttribute("data-lucide", "pencil");
-    newEditIcon.classList.add("iconEdit")
-    newEditBtn.appendChild(newEditIcon);
-
-
-    const newRemoveBtn = document.createElement("button");
-    newRemoveBtn.classList.add("btnRemove");
-    const newRemoveIcon = document.createElement("i")
-    newRemoveIcon.setAttribute("data-lucide", "trash")
-    newRemoveIcon.classList.add("iconRemove")
-    newRemoveBtn.appendChild(newRemoveIcon)
-
-    const newCheckBtn = document.createElement("button");
-    newCheckBtn.classList.add("btnCheck");
-    const newCheckIcon = document.createElement("i")
-    newCheckIcon.setAttribute("data-lucide", "check")
-    newCheckIcon.classList.add("iconCheck")
-    newCheckBtn.appendChild(newCheckIcon)
-
-    const buttonsContainer = document.createElement("div");
-    buttonsContainer.classList.add("btnsContainer"); // Div that contains all buttons
-    buttonsContainer.append(newEditBtn, newRemoveBtn, newCheckBtn);
-
-    // Append the div that contains all buttons
-    newLi.append(newLiText, buttonsContainer);
-    list.append(newLi); // Add the list item to the list
-
-    buttonsContainer.addEventListener("click", (event) => {
-      const button = event.target.closest("button"); // Get the closest button (even if clicking the icon)
-      if (!button) return; // Ignore clicks outside buttons
-    
-      if (button.classList.contains("btnEdit")) {
-        editTask(newLi, newLiText, buttonsContainer); // Pass the necessary elements
-      } else if (button.classList.contains("btnRemove")) {
-        removeTask();
-      } else if (button.classList.contains("btnCheck")) {
-        checkTask()
-      }
-    });
-
-    // Function to edit a task
-    function editTask() {
-      const inputEditTask = document.createElement("input"); // Create an input field for editing
-      inputEditTask.classList.add("inputEditTask");
-      inputEditTask.type = "text"; // Set input type to text
-      inputEditTask.value = newLiText.childNodes[0].nodeValue; // Set input value to current to current task
-
-      // Create a button to finish editing and its icon
-      const finishEditBtn = document.createElement("button");
-      finishEditBtn.classList.add("btnFinishEdit")
-      const checkIcon = document.createElement("i");
-      checkIcon.setAttribute("data-lucide", "check");
-      checkIcon.classList.add("iconFinishEdit")
-      finishEditBtn.appendChild(checkIcon);
-
-      // Create a button to cancel edition
-      const cancelEditionBtn = document.createElement("button");
-      const cancelEditionIcon = document.createElement("i");
-      cancelEditionBtn.classList.add("cancelEditionBtn")
-      cancelEditionIcon.setAttribute("data-lucide", "x");
-      cancelEditionIcon.classList.add("iconFinishRemove")
-      cancelEditionBtn.appendChild(cancelEditionIcon);
-
-      const editButtonsContainer = document.createElement("div");
-      editButtonsContainer.classList.add("buttonsContainer");
-      editButtonsContainer.append(finishEditBtn, cancelEditionBtn);
-
-      newLi.textContent = ""; // Clear the list item content
-      newLi.append(inputEditTask, editButtonsContainer); // Add input and buttons to the list item
-
-      inputEditTask.focus(); // Focus on the input field
-
-      // Add functionality to finish editing
-      finishEditBtn.addEventListener("click", () => {
-        newLiText.textContent = inputEditTask.value; // Update list item text
-        newLi.textContent = "";
-        newLi.append(newLiText, buttonsContainer); // Restore original buttons
-      });
-
-      cancelEditionBtn.addEventListener("click", () => {
-        newLi.textContent = "";
-        newLi.append(newLiText, buttonsContainer); // Restore original buttons
-      });
-
-      // Re-initialize Lucide icons after adding them to the DOM
-      lucide.createIcons();
-    }
-
-    // Function to remove a task
-    function removeTask() {
-      newLi.remove(); // Remove the list item
-    }
-
-    // Function to check/uncheck a task
-    function checkTask() {
-      newLiText.classList.toggle("checked"); // Toggle the "checked" class
-      newLi.classList.toggle("checkedNewLi")
-    }
-
-    inputEx.value = ""; // Clear the input field
+    inputEx.value = ""; // Clears the input field
 
     // Re-initialize Lucide icons after adding them to the DOM
     lucide.createIcons();
   });
+
+  function loadTasks() {
+    const tasks = JSON.parse(localStorage.getItem("tasks") || "[]"); // Retrieve tasks from localStorage
+    tasks.forEach((task) => {
+      // Generate a task element for each task and append it to the list
+      const newTaskElement = createTaskElement(task);
+      list.appendChild(newTaskElement);
+    });
+  }
+
+  function createTaskElement(task) {
+    const newLi = document.createElement("li");
+    const newLiText = document.createElement("span");
+    const newEditBtn = document.createElement("button");
+    const newEditIcon = document.createElement("i");
+    const newRemoveBtn = document.createElement("button");
+    const newRemoveIcon = document.createElement("i");
+    const newCheckBtn = document.createElement("button");
+    const newCheckIcon = document.createElement("i");
+    const buttonsContainer = document.createElement("div");
+
+    newLi.classList.add("newLi"); // Add a class to the list item
+    newLiText.textContent = task; // Assign the task text
+    newLiText.classList.add("newLiText"); // Add a class to the text
+
+    // Create buttons for editing, removing, and checking tasks
+    newEditBtn.classList.add("btnEdit");
+    newEditIcon.setAttribute("data-lucide", "pencil");
+    newEditIcon.classList.add("iconEdit");
+    newEditBtn.appendChild(newEditIcon);
+
+    newRemoveBtn.classList.add("btnRemove");
+    newRemoveIcon.setAttribute("data-lucide", "trash");
+    newRemoveIcon.classList.add("iconRemove");
+    newRemoveBtn.appendChild(newRemoveIcon);
+
+    newCheckBtn.classList.add("btnCheck");
+    newCheckIcon.setAttribute("data-lucide", "check");
+    newCheckIcon.classList.add("iconCheck");
+    newCheckBtn.appendChild(newCheckIcon);
+
+    buttonsContainer.classList.add("btnsContainer"); // Div that contains all buttons
+    buttonsContainer.append(newEditBtn, newRemoveBtn, newCheckBtn);
+
+    // Append the text and buttons to the list item
+    newLi.append(newLiText, buttonsContainer);
+
+    // Add event listeners for task actions
+    buttonsContainer.addEventListener("click", (event) => {
+      const button = event.target.closest("button"); // Get the closest button (even if clicking the icon)
+      if (!button) return; // Ignore clicks outside buttons
+
+      if (button.classList.contains("btnEdit")) {
+        editTask(newLi, newLiText, buttonsContainer); // Pass the necessary elements
+      } else if (button.classList.contains("btnRemove")) {
+        removeTask(newLi);
+      } else if (button.classList.contains("btnCheck")) {
+        checkTask(newLiText, newLi);
+      }
+    });
+
+    return newLi; // Return the created task element
+  }
+
+  function storeTaskInLocalStorage(task) {
+    const tasks = JSON.parse(localStorage.getItem("tasks") || "[]"); // Retrieve existing tasks
+    tasks.push(task); // Add the new task to the array
+    localStorage.setItem("tasks", JSON.stringify(tasks)); // Save updated tasks back to localStorage
+  }
+
+  function editTask(newLi, newLiText, buttonsContainer) {
+    const inputEditTask = document.createElement("input"); // Create an input field for editing
+    inputEditTask.classList.add("inputEditTask");
+    inputEditTask.type = "text"; // Set input type to text
+    inputEditTask.value = newLiText.textContent; // Set input value to current task
+
+    const finishEditBtn = document.createElement("button");
+    finishEditBtn.classList.add("btnFinishEdit");
+    const checkIcon = document.createElement("i");
+    checkIcon.setAttribute("data-lucide", "check");
+    checkIcon.classList.add("iconFinishEdit");
+    finishEditBtn.appendChild(checkIcon);
+
+    const cancelEditionBtn = document.createElement("button");
+    const cancelEditionIcon = document.createElement("i");
+    cancelEditionBtn.classList.add("cancelEditionBtn");
+    cancelEditionIcon.setAttribute("data-lucide", "x");
+    cancelEditionIcon.classList.add("iconFinishRemove");
+    cancelEditionBtn.appendChild(cancelEditionIcon);
+
+    const editButtonsContainer = document.createElement("div");
+    editButtonsContainer.classList.add("buttonsContainer");
+    editButtonsContainer.append(finishEditBtn, cancelEditionBtn);
+
+    newLi.textContent = ""; // Clear the list item content
+    newLi.append(inputEditTask, editButtonsContainer); // Add input and buttons to the list item
+
+    inputEditTask.focus(); // Focus on the input field
+
+    finishEditBtn.addEventListener("click", () => {
+      newLiText.textContent = inputEditTask.value; // Update list item text
+      newLi.textContent = "";
+      newLi.append(newLiText, buttonsContainer); // Restore original buttons
+    });
+
+    cancelEditionBtn.addEventListener("click", () => {
+      newLi.textContent = "";
+      newLi.append(newLiText, buttonsContainer); // Restore original buttons
+    });
+
+    lucide.createIcons(); // Re-initialize Lucide icons
+  }
+
+  function removeTask(newLi) {
+    newLi.remove(); // Remove the list item
+    localStorage.removeItem("tasks")
+  }
+
+  function checkTask(newLiText, newLi) {
+    newLiText.classList.toggle("checked"); // Toggle the "checked" class
+    newLi.classList.toggle("checkedNewLi");
+  }
 }
 
 // Initialize task managers for the starred and daily lists
