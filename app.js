@@ -36,6 +36,14 @@ menuBtn.addEventListener("click", () => {
 
 closeMenuBtn.addEventListener("click", closeMenu);
 
+
+document.addEventListener("click", (event) => {
+  // Check if the click happened outside the menu and not on the button
+  if (!menu.contains(event.target) && !menuBtn.contains(event.target)) {
+    closeMenu()
+    }
+});
+
 function closeMenu() {
   // Function to close menu
   menu.classList.remove("active");
