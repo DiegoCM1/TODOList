@@ -28,14 +28,17 @@ const menuBtn = document.querySelector("#menuBtn"); //Btn
 const menu = document.querySelector("#menu"); // Menu
 const closeMenuBtn = document.querySelector("#closeMenuBtn"); //Close menu
 
+
+
+//Logic for menu
 menuBtn.addEventListener("click", () => {
   menu.classList.add("active");
 });
 
 closeMenuBtn.addEventListener("click", closeMenu);
 
-document.addEventListener("click", (event) => {
-  // Check if the click happened outside the menu and not on the button
+document.addEventListener("click", (event) => {   // Check if the click happened outside the menu and not on the button
+
   if (!menu.contains(event.target) && !menuBtn.contains(event.target)) {
     closeMenu();
   }
@@ -46,14 +49,35 @@ function closeMenu() {
   menu.classList.remove("active");
 }
 
-
-//Logic for menu options
 const menuOptions = document.getElementById("menuOptions");
 
-menuOptions.addEventListener("click", (event) => {
+menuOptions.addEventListener("click", (event) => {//Event listener to the parent menu
   if (event.target.closest("#themeOption")) {
     document.body.classList.toggle("darkBody");
-    closeMenu();
+
+    if(document.body.classList.contains("darkBody")){ // Validation if its dark or light
+      const themeIconParent = document.querySelector("#themeIcon")     //Select span
+      let themeIconChildren = themeIconParent.firstElementChild // Select i
+      themeIconChildren.remove() // Removes the only child
+  
+      // Creates and inserts the new icon
+      themeIconChildren = document.createElement("i")
+      themeIconChildren.setAttribute("data-lucide", "sun");
+      themeIconParent.appendChild(themeIconChildren)
+    } else if(!document.body.classList.contains("darkBody")){
+      const themeIconParent = document.querySelector("#themeIcon")     //Select span
+
+      let themeIconChildren = themeIconParent.firstElementChild // Select i
+  
+      themeIconChildren.remove() // Removes the only child
+  
+      // Creates and inserts the new icon
+      themeIconChildren = document.createElement("i")
+      themeIconChildren.setAttribute("data-lucide", "moon");
+      themeIconParent.appendChild(themeIconChildren)
+    }
+    // Re-initialize Lucide icons after adding them to the DOM
+    lucide.createIcons();
   } else if (event.target.closest("#notificationsOption")) {
     closeMenu();
   } else if (event.target.closest("#syncOption")) {
@@ -252,7 +276,7 @@ function setUpTaskManager(formSelector, listSelector) {
 
     finishEditBtn.addEventListener("click", () => {
       const inputEx = formEx.querySelector("input"); // Select the input field
-      let task = inputEx.value;  
+      let task = inputEx.value;
       storeTaskInLocalStorage(task);
 
       newLiText.textContent = inputEditTask.value; // Update list item text

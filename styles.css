@@ -54,6 +54,10 @@ h1 {
   align-content: end;
 }
 
+.darkBody .menu{
+  background-color: rgb(43, 43, 43);
+}
+
 .menu.active {
   /* 🔹 When active, slide in */
   left: 0;
