@@ -162,12 +162,27 @@ nav {
   border-radius: 16px;
 }
 
+.darkBody .List{
+  color: white;
+  background-color: rgb(43, 43, 43);
+  border:none;
+}
+
 .menuActions {
   display: flex;
   justify-content: space-around;
   align-items: center;
   margin-bottom: 8px;
   width: 100%;
+}
+
+.menuActionBtn{
+  background-color: transparent;
+  border: none;
+}
+
+.darkBody .menuActionBtn{
+  color: rgb(206, 206, 206);
 }
 
 /* FORM */
@@ -209,8 +224,19 @@ nav {
   gap: 3vw;
 }
 
+.darkBody .newLi{
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+
 .checkedNewLi{
   background-color: rgb(150, 150, 150);
+}
+
+.darkBody .checkedNewLi{
+  background-color: rgb(150, 150, 150);
+
 }
 
 .newLiText {
@@ -222,6 +248,10 @@ nav {
 
 .checked {
   text-decoration: line-through;
+}
+
+.darkBody .checked{
+  text-decoration:line-through;
 }
 
 .btnsContainer {
@@ -245,6 +275,10 @@ nav {
   color: black;
 }
 
+.darkBody .iconEdit{
+  color: gray;
+}
+
 
 .inputEditTask {
   display: flex;
@@ -265,9 +299,17 @@ nav {
   color: purple;
 }
 
+.darkBody .iconFinishEdit{
+  color: gray;
+}
+
 .cancelEditionBtn{
   background-color: transparent;
   border: none;
+}
+
+.darkBody .cancelEditionBtn{
+  color: gray;
 }
 
 /* Remove button */
