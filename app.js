@@ -11,8 +11,6 @@ function setFavicon(url) {
 // Example: Set favicon on page load
 setFavicon("/TODOList/assets/favicon.png");
 
-
-
 // Select the sections for the lists
 const starredList = document.querySelector("#starredList"); // Starred list section
 const dailyList = document.querySelector("#dailyList"); // Daily list section
@@ -36,18 +34,36 @@ menuBtn.addEventListener("click", () => {
 
 closeMenuBtn.addEventListener("click", closeMenu);
 
-
 document.addEventListener("click", (event) => {
   // Check if the click happened outside the menu and not on the button
   if (!menu.contains(event.target) && !menuBtn.contains(event.target)) {
-    closeMenu()
-    }
+    closeMenu();
+  }
 });
 
 function closeMenu() {
   // Function to close menu
   menu.classList.remove("active");
 }
+
+
+//Logic for menu options
+const menuOptions = document.getElementById("menuOptions");
+
+menuOptions.addEventListener("click", (event) => {
+  if (event.target.closest("#themeOption")) {
+    document.body.classList.toggle("darkBody");
+    closeMenu();
+  } else if (event.target.closest("#notificationsOption")) {
+    closeMenu();
+  } else if (event.target.closest("#syncOption")) {
+    closeMenu();
+  } else if (event.target.closest("#accountOption")) {
+    closeMenu();
+  } else if (event.target.closest("#logoutOption")) {
+    closeMenu();
+  }
+});
 
 // Select the navigation container
 const nav = document.querySelector("nav");
@@ -140,8 +156,8 @@ function setUpTaskManager(formSelector, listSelector) {
       const newTaskElement = createTaskElement(task);
       list.appendChild(newTaskElement);
 
-    // Re-initialize Lucide icons after adding them to the DOM
-    lucide.createIcons();
+      // Re-initialize Lucide icons after adding them to the DOM
+      lucide.createIcons();
     });
   }
 
@@ -235,6 +251,10 @@ function setUpTaskManager(formSelector, listSelector) {
     inputEditTask.focus(); // Focus on the input field
 
     finishEditBtn.addEventListener("click", () => {
+      const inputEx = formEx.querySelector("input"); // Select the input field
+      let task = inputEx.value;  
+      storeTaskInLocalStorage(task);
+
       newLiText.textContent = inputEditTask.value; // Update list item text
       newLi.textContent = "";
       newLi.append(newLiText, buttonsContainer); // Restore original buttons
@@ -250,7 +270,7 @@ function setUpTaskManager(formSelector, listSelector) {
 
   function removeTask(newLi) {
     newLi.remove(); // Remove the list item
-    localStorage.removeItem("tasks")
+    localStorage.removeItem("tasks");
   }
 
   function checkTask(newLiText, newLi) {
