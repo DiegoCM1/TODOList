@@ -29,6 +29,26 @@ const menu = document.querySelector("#menu"); // Menu
 const closeMenuBtn = document.querySelector("#closeMenuBtn"); //Close menu
 
 
+// Sort
+  const sortConfigBtn = document.getElementById("sortConfigBtn")
+  const sortConfig = document.getElementById("sortConfig")
+  console.log(sortConfig)
+  sortConfigBtn.addEventListener("click", () => {
+    sortConfig.classList.add("active");
+  });
+
+  document.addEventListener("click", (event) => {   // Check if the click happened outside the menu and not on the button
+    if (!sortConfig.contains(event.target) && !sortConfigBtn.contains(event.target)) {
+      closeSortConfig();
+    }
+  });
+
+  function closeSortConfig() { // Closes the sort config
+    // Function to close menu
+    sortConfig.classList.remove("active");
+  }
+// SORT
+
 
 //Logic for menu
 menuBtn.addEventListener("click", () => {

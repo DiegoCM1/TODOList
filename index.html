@@ -38,7 +38,7 @@
                 <li class="menuOption" id="syncOption">
                     <span class="menuIcon"> <i data-lucide="calendar-plus"></i> </span>
                     <p class="menuP">Sync to Google Calendar</p>
-                </li>                
+                </li>
                 <li class="menuOption" id="accountOption">
                     <span class="menuIcon"> <i data-lucide="circle-user-round"></i>
                     </span>
@@ -73,7 +73,7 @@
             <div class="menuActions">
                 <h2>Starred</h2>
                 <div>
-                    <button class="menuActionBtn">
+                    <button id="sortConfigBtn" class="menuActionBtn">
                         <i data-lucide="arrow-down-up"></i>
                     </button>
                     <button class="menuActionBtn">
@@ -123,6 +123,33 @@
         <section class="List" id="newList">
 
         </section>
+
+
+
+
+        <!-- Sort By Config -->
+        <div id="sortConfig" class="sortConfig">
+            <div class="sortConfigTitle">
+                Sort by
+            </div>
+            <div class="sortBtnsContainer">
+                <button class="sortOption">
+                    <span class="sortOptionIcon"> <i data-lucide="check"></i>
+                    </span>
+                    My order
+                </button>
+                <button class="sortOption">
+                    <span class="sortOptionIcon"> <i data-lucide="check"></i>
+                    </span>
+                    Date
+                </button>
+                <button class="sortOption">
+                    <span class="sortOptionIcon"> <i data-lucide="check"></i>
+                    </span>
+                    Starred Recently
+                </button>
+            </div>
+        </div>
 
     </main>
 
