@@ -165,7 +165,7 @@ function setUpTaskManager(formSelector, listSelector) {
 
     // Create and append the new task element
     const newTaskElement = createTaskElement(task);
-    list.appendChild(newTaskElement);
+    list.prepend(newTaskElement);
 
     inputEx.value = ""; // Clears the input field
 
