@@ -28,63 +28,6 @@ const menuBtn = document.querySelector("#menuBtn"); //Btn
 const menu = document.querySelector("#menu"); // Menu
 const closeMenuBtn = document.querySelector("#closeMenuBtn"); //Close menu
 
-// // Sort
-//   const sortConfigBtn = document.getElementById("sortConfigBtn")
-//   const sortConfig = document.getElementById("sortConfig")
-//   console.log(sortConfig)
-
-//   sortConfigBtn.addEventListener("click", () => { //Opens and closes sort options menu
-//     if(sortConfig.classList.contains("active")){
-//       closeSortConfig()
-//     } else {
-//       sortConfig.classList.add("active");
-//     }
-
-//   });
-
-//   document.addEventListener("click", (event) => {   // Check if the click happened outside the menu and not on the button
-//     if (!sortConfig.contains(event.target) && !sortConfigBtn.contains(event.target)) {
-//       closeSortConfig();
-//     }
-//   });
-
-//   function closeSortConfig() { // Closes the sort config
-//     // Function to close menu
-//     sortConfig.classList.remove("active");
-//   }
-// // SORT
-
-// // List Config
-// const listConfigBtn = document.getElementById("listConfigBtn");
-// const listConfig = document.getElementById("listConfig");
-// console.log(listConfig);
-
-// listConfigBtn.addEventListener("click", () => {
-//   //Opens and closes sort options menu
-//   if (listConfig.classList.contains("active")) {
-//     closelistConfig();
-//   } else {
-//     listConfig.classList.add("active");
-//   }
-// });
-
-// document.addEventListener("click", (event) => {
-//   // Check if the click happened outside the menu and not on the button
-//   if (
-//     !listConfig.contains(event.target) &&
-//     !listConfigBtn.contains(event.target)
-//   ) {
-//     closelistConfig();
-//   }
-// });
-
-// function closelistConfig() {
-//   // Closes the sort config
-//   // Function to close menu
-//   listConfig.classList.remove("active");
-// }
-// // List config
-
 //Logic for menu
 menuBtn.addEventListener("click", () => {
   menu.classList.add("active");
@@ -138,12 +81,16 @@ menuOptions.addEventListener("click", (event) => {
     lucide.createIcons();
   } else if (event.target.closest("#notificationsOption")) {
     closeMenu();
+    showToast("Coming Soon... 🔨");
   } else if (event.target.closest("#syncOption")) {
     closeMenu();
+    showToast("Coming Soon... 🔨");
   } else if (event.target.closest("#accountOption")) {
     closeMenu();
+    showToast("Coming Soon... 🔨");
   } else if (event.target.closest("#logoutOption")) {
     closeMenu();
+    showToast("Coming Soon... 🔨");
   }
 });
 
@@ -158,7 +105,7 @@ nav.addEventListener("click", (event) => {
   } else if (event.target.id === "dailyListButton") {
     showDailyList(event);
   } else if (event.target.id === "newListButton") {
-    showNewList(event);
+    showToast("Coming Soon... 🔨");
   }
 });
 
@@ -198,6 +145,21 @@ const showNewList = (event) => {
   dailyListButton.classList.remove("selectedBtnNav");
 };
 
+// Function to show toast
+function showToast(message, duration = 3000) {
+  const container = document.getElementById('toast-container');
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.textContent = message;
+
+  container.appendChild(toast);
+
+  setTimeout(() => {
+    toast.remove();
+  }, duration);
+}
+
+
 // Show the starred list by default when the page loads
 document.addEventListener("DOMContentLoaded", () => {
   showStarredList({ target: starredListButton }); // Simulate a click on the starred list button
@@ -214,14 +176,15 @@ function setUpTaskManager(
 ) {
   const formEx = document.querySelector(formSelector); // Select the form
   const list = document.querySelector(listSelector); // Select the list
+  const sortConfigBtn = document.querySelector(sortConfigBtnSelector); //Select the button
+  const sortConfig = document.querySelector(sortConfigSelector); // Selects the menu
+  const listConfigBtn = document.querySelector(listConfigBtnSelector);
+  const listConfig = document.querySelector(listConfigSelector);
 
   loadTasks(); // Load tasks from localStorage
 
-  // SORT
-  const sortConfigBtn = document.querySelector(sortConfigBtnSelector); //Select the button
-  const sortConfig = document.querySelector(sortConfigSelector); // Selects the menu
-  console.log(sortConfig);
 
+  //Sort Logic
   sortConfigBtn.addEventListener("click", () => {
     //Opens and closes sort options menu
     if (sortConfig.classList.contains("active")) {
@@ -247,11 +210,7 @@ function setUpTaskManager(
     sortConfig.classList.remove("active");
   }
 
-  // List Config
-  const listConfigBtn = document.querySelector(listConfigBtnSelector);
-  const listConfig = document.querySelector(listConfigSelector);
-  console.log(listConfig);
-
+  // List Config Logic
   listConfigBtn.addEventListener("click", () => {
     //Opens and closes sort options menu
     if (listConfig.classList.contains("active")) {
@@ -429,12 +388,19 @@ function setUpTaskManager(
 }
 
 // Initialize task managers for the starred and daily lists
-setUpTaskManager("#task-form", "#task-list", "#sortConfigBtn", "#sortConfig", "#listConfigBtn", "#listConfig"); // Set up task manager for the starred list
+setUpTaskManager(
+  "#task-form",
+  "#task-list",
+  "#sortConfigBtn",
+  "#sortConfig",
+  "#listConfigBtn",
+  "#listConfig"
+); // Set up task manager for the starred list
 setUpTaskManager(
   "#task-form-daily",
   "#task-list-daily",
   "#sortConfigBtnDaily",
   "#sortConfigDaily",
-  "#listConfigBtnDaily", 
+  "#listConfigBtnDaily",
   "#listConfigDaily"
 ); // Set up task manager for the daily list
