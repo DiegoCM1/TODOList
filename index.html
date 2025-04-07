@@ -76,7 +76,7 @@
                     <button id="sortConfigBtn" class="menuActionBtn">
                         <i data-lucide="arrow-down-up"></i>
                     </button>
-                    <button class="menuActionBtn">
+                    <button id="listConfigBtn" class="menuActionBtn">
                         <i data-lucide="sliders-horizontal"></i>
                     </button>
                 </div>
@@ -99,10 +99,10 @@
             <div class="menuActions">
                 <h2>Daily list</h2>
                 <div>
-                    <button class="menuActionBtn">
+                    <button id="sortConfigBtnDaily" class="menuActionBtn">
                         <i data-lucide="arrow-down-up"></i>
                     </button>
-                    <button class="menuActionBtn">
+                    <button id="listConfigBtnDaily" class="menuActionBtn">
                         <i data-lucide="sliders-horizontal"></i>
                     </button>
                 </div>
@@ -127,7 +127,7 @@
 
 
 
-        <!-- Sort By Config -->
+        <!-- Sort By Config Starred-->
         <div id="sortConfig" class="sortConfig">
             <div class="sortConfigTitle">
                 Sort by
@@ -147,6 +147,62 @@
                     <span class="sortOptionIcon"> <i data-lucide="check"></i>
                     </span>
                     Starred Recently
+                </button>
+            </div>
+        </div>
+
+        <!-- List Config Starred -->
+        <div id="listConfig" class="listConfig">
+            <div class="listConfigBtnsContainer">
+                <button class="listConfigOption">
+                    Rename List
+                </button>
+                <button class="listConfigOption">
+                    Delete List
+                </button>
+                <button class="listConfigOption">
+                    Delete All Completed Tasks
+                </button>
+            </div>
+        </div>
+
+
+
+        <!-- Sort By Config Daily -->
+        <div id="sortConfigDaily" class="sortConfig">
+            <div class="sortConfigTitle">
+                Sort by
+            </div>
+            <div class="sortBtnsContainer">
+                <button class="sortOption">
+                    <span class="sortOptionIcon"> <i data-lucide="check"></i>
+                    </span>
+                    My order
+                </button>
+                <button class="sortOption">
+                    <span class="sortOptionIcon"> <i data-lucide="check"></i>
+                    </span>
+                    Date
+                </button>
+                <button class="sortOption">
+                    <span class="sortOptionIcon"> <i data-lucide="check"></i>
+                    </span>
+                    Starred Recently
+                </button>
+            </div>
+        </div>
+
+        <!-- List Config Daily -->
+        <div id="listConfigDaily" class="listConfig">
+            <div class="listConfigBtnsContainer">
+                <button class="listConfigOption">
+                    Rename List
+                </button>
+                <button class="listConfigOption">
+                    Delete List
+                </button>
+                <button class="listConfigOption">
+                    Delete All Completed Tasks
                 </button>
             </div>
         </div>

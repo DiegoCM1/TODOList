@@ -28,27 +28,62 @@ const menuBtn = document.querySelector("#menuBtn"); //Btn
 const menu = document.querySelector("#menu"); // Menu
 const closeMenuBtn = document.querySelector("#closeMenuBtn"); //Close menu
 
+// // Sort
+//   const sortConfigBtn = document.getElementById("sortConfigBtn")
+//   const sortConfig = document.getElementById("sortConfig")
+//   console.log(sortConfig)
 
-// Sort
-  const sortConfigBtn = document.getElementById("sortConfigBtn")
-  const sortConfig = document.getElementById("sortConfig")
-  console.log(sortConfig)
-  sortConfigBtn.addEventListener("click", () => {
-    sortConfig.classList.add("active");
-  });
+//   sortConfigBtn.addEventListener("click", () => { //Opens and closes sort options menu
+//     if(sortConfig.classList.contains("active")){
+//       closeSortConfig()
+//     } else {
+//       sortConfig.classList.add("active");
+//     }
 
-  document.addEventListener("click", (event) => {   // Check if the click happened outside the menu and not on the button
-    if (!sortConfig.contains(event.target) && !sortConfigBtn.contains(event.target)) {
-      closeSortConfig();
-    }
-  });
+//   });
 
-  function closeSortConfig() { // Closes the sort config
-    // Function to close menu
-    sortConfig.classList.remove("active");
-  }
-// SORT
+//   document.addEventListener("click", (event) => {   // Check if the click happened outside the menu and not on the button
+//     if (!sortConfig.contains(event.target) && !sortConfigBtn.contains(event.target)) {
+//       closeSortConfig();
+//     }
+//   });
 
+//   function closeSortConfig() { // Closes the sort config
+//     // Function to close menu
+//     sortConfig.classList.remove("active");
+//   }
+// // SORT
+
+// // List Config
+// const listConfigBtn = document.getElementById("listConfigBtn");
+// const listConfig = document.getElementById("listConfig");
+// console.log(listConfig);
+
+// listConfigBtn.addEventListener("click", () => {
+//   //Opens and closes sort options menu
+//   if (listConfig.classList.contains("active")) {
+//     closelistConfig();
+//   } else {
+//     listConfig.classList.add("active");
+//   }
+// });
+
+// document.addEventListener("click", (event) => {
+//   // Check if the click happened outside the menu and not on the button
+//   if (
+//     !listConfig.contains(event.target) &&
+//     !listConfigBtn.contains(event.target)
+//   ) {
+//     closelistConfig();
+//   }
+// });
+
+// function closelistConfig() {
+//   // Closes the sort config
+//   // Function to close menu
+//   listConfig.classList.remove("active");
+// }
+// // List config
 
 //Logic for menu
 menuBtn.addEventListener("click", () => {
@@ -57,7 +92,8 @@ menuBtn.addEventListener("click", () => {
 
 closeMenuBtn.addEventListener("click", closeMenu);
 
-document.addEventListener("click", (event) => {   // Check if the click happened outside the menu and not on the button
+document.addEventListener("click", (event) => {
+  // Check if the click happened outside the menu and not on the button
 
   if (!menu.contains(event.target) && !menuBtn.contains(event.target)) {
     closeMenu();
@@ -71,30 +107,32 @@ function closeMenu() {
 
 const menuOptions = document.getElementById("menuOptions");
 
-menuOptions.addEventListener("click", (event) => {//Event listener to the parent menu
+menuOptions.addEventListener("click", (event) => {
+  //Event listener to the parent menu
   if (event.target.closest("#themeOption")) {
     document.body.classList.toggle("darkBody");
 
-    if(document.body.classList.contains("darkBody")){ // Validation if its dark or light
-      const themeIconParent = document.querySelector("#themeIcon")     //Select span
-      let themeIconChildren = themeIconParent.firstElementChild // Select i
-      themeIconChildren.remove() // Removes the only child
-  
-      // Creates and inserts the new icon
-      themeIconChildren = document.createElement("i")
-      themeIconChildren.setAttribute("data-lucide", "sun");
-      themeIconParent.appendChild(themeIconChildren)
-    } else if(!document.body.classList.contains("darkBody")){
-      const themeIconParent = document.querySelector("#themeIcon")     //Select span
+    if (document.body.classList.contains("darkBody")) {
+      // Validation if its dark or light
+      const themeIconParent = document.querySelector("#themeIcon"); //Select span
+      let themeIconChildren = themeIconParent.firstElementChild; // Select i
+      themeIconChildren.remove(); // Removes the only child
 
-      let themeIconChildren = themeIconParent.firstElementChild // Select i
-  
-      themeIconChildren.remove() // Removes the only child
-  
       // Creates and inserts the new icon
-      themeIconChildren = document.createElement("i")
+      themeIconChildren = document.createElement("i");
+      themeIconChildren.setAttribute("data-lucide", "sun");
+      themeIconParent.appendChild(themeIconChildren);
+    } else if (!document.body.classList.contains("darkBody")) {
+      const themeIconParent = document.querySelector("#themeIcon"); //Select span
+
+      let themeIconChildren = themeIconParent.firstElementChild; // Select i
+
+      themeIconChildren.remove(); // Removes the only child
+
+      // Creates and inserts the new icon
+      themeIconChildren = document.createElement("i");
       themeIconChildren.setAttribute("data-lucide", "moon");
-      themeIconParent.appendChild(themeIconChildren)
+      themeIconParent.appendChild(themeIconChildren);
     }
     // Re-initialize Lucide icons after adding them to the DOM
     lucide.createIcons();
@@ -166,11 +204,78 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Function to set up task management for a specific form and list
-function setUpTaskManager(formSelector, listSelector) {
+function setUpTaskManager(
+  formSelector,
+  listSelector,
+  sortConfigBtnSelector,
+  sortConfigSelector,
+  listConfigBtnSelector,
+  listConfigSelector
+) {
   const formEx = document.querySelector(formSelector); // Select the form
   const list = document.querySelector(listSelector); // Select the list
 
   loadTasks(); // Load tasks from localStorage
+
+  // SORT
+  const sortConfigBtn = document.querySelector(sortConfigBtnSelector); //Select the button
+  const sortConfig = document.querySelector(sortConfigSelector); // Selects the menu
+  console.log(sortConfig);
+
+  sortConfigBtn.addEventListener("click", () => {
+    //Opens and closes sort options menu
+    if (sortConfig.classList.contains("active")) {
+      closeSortConfig();
+    } else {
+      sortConfig.classList.add("active");
+    }
+  });
+
+  document.addEventListener("click", (event) => {
+    // Check if the click happened outside the menu and not on the button
+    if (
+      !sortConfig.contains(event.target) &&
+      !sortConfigBtn.contains(event.target)
+    ) {
+      closeSortConfig();
+    }
+  });
+
+  function closeSortConfig() {
+    // Closes the sort config
+    // Function to close menu
+    sortConfig.classList.remove("active");
+  }
+
+  // List Config
+  const listConfigBtn = document.querySelector(listConfigBtnSelector);
+  const listConfig = document.querySelector(listConfigSelector);
+  console.log(listConfig);
+
+  listConfigBtn.addEventListener("click", () => {
+    //Opens and closes sort options menu
+    if (listConfig.classList.contains("active")) {
+      closelistConfig();
+    } else {
+      listConfig.classList.add("active");
+    }
+  });
+
+  document.addEventListener("click", (event) => {
+    // Check if the click happened outside the menu and not on the button
+    if (
+      !listConfig.contains(event.target) &&
+      !listConfigBtn.contains(event.target)
+    ) {
+      closelistConfig();
+    }
+  });
+
+  function closelistConfig() {
+    // Closes the sort config
+    // Function to close menu
+    listConfig.classList.remove("active");
+  }
 
   // Add event listener for form submission
   formEx.addEventListener("submit", (e) => {
@@ -324,5 +429,12 @@ function setUpTaskManager(formSelector, listSelector) {
 }
 
 // Initialize task managers for the starred and daily lists
-setUpTaskManager("#task-form", "#task-list"); // Set up task manager for the starred list
-setUpTaskManager("#task-form-daily", "#task-list-daily"); // Set up task manager for the daily list
+setUpTaskManager("#task-form", "#task-list", "#sortConfigBtn", "#sortConfig", "#listConfigBtn", "#listConfig"); // Set up task manager for the starred list
+setUpTaskManager(
+  "#task-form-daily",
+  "#task-list-daily",
+  "#sortConfigBtnDaily",
+  "#sortConfigDaily",
+  "#listConfigBtnDaily", 
+  "#listConfigDaily"
+); // Set up task manager for the daily list
