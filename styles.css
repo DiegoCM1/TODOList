@@ -145,6 +145,10 @@ nav {
   cursor: pointer;
 }
 
+.buttonNav:hover{
+  color: rgb(218, 218, 218);
+}
+
 .selectedBtnNav {
   color: white;
   border-bottom: solid white 3px;
@@ -394,6 +398,10 @@ nav {
   flex-grow: 1;
 }
 
+.sortOption:hover{
+  background-color: rgb(117, 117, 117);
+}
+
 .sortOptionIcon{
   margin: 3px;
 }
@@ -439,6 +447,10 @@ nav {
   justify-content: flex-start;
   align-items: center;
   flex-grow: 1;
+}
+
+.listConfigOption:hover{
+  background-color: rgb(117, 117, 117);
 }
 
 /* TOAST */
