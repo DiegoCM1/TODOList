@@ -22,9 +22,6 @@
 
         <!-- Menu shit -->
         <div id="menu" class="menu">
-            <button id="closeMenuBtn">
-                <i data-lucide="align-justify"></i>
-            </button>
             <ul id="menuOptions">
                 <li class="menuOption" id="themeOption">
                     <span class="menuIcon" id="themeIcon"> <i data-lucide="moon"></i>
@@ -132,18 +129,18 @@
             <div class="sortConfigTitle">
                 Sort by
             </div>
-            <div class="sortBtnsContainer">
-                <button class="sortOption">
+            <div id="sortBtnsContainer" class="sortBtnsContainer">
+                <button id="myOrderBtn" class="sortOption">
                     <span class="sortOptionIcon"> <i data-lucide="check"></i>
                     </span>
                     My order
                 </button>
-                <button class="sortOption">
+                <button id="dateOrderBtn" class="sortOption">
                     <span class="sortOptionIcon"> <i data-lucide="check"></i>
                     </span>
                     Date
                 </button>
-                <button class="sortOption">
+                <button id="recentlyStarredBtn" class="sortOption">
                     <span class="sortOptionIcon"> <i data-lucide="check"></i>
                     </span>
                     Starred Recently
@@ -153,14 +150,14 @@
 
         <!-- List Config Starred -->
         <div id="listConfig" class="listConfig">
-            <div class="listConfigBtnsContainer">
-                <button class="listConfigOption">
+            <div id="listConfigBtnsContainer" class="listConfigBtnsContainer">
+                <button id="renameListBtn" class="listConfigOption">
                     Rename List
                 </button>
-                <button class="listConfigOption">
+                <button id="deleteListBtn" class="listConfigOption">
                     Delete List
                 </button>
-                <button class="listConfigOption">
+                <button id="deleteCheckedTasksBtn" class="listConfigOption">
                     Delete All Completed Tasks
                 </button>
             </div>

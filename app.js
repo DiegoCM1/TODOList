@@ -26,14 +26,11 @@ const newListButton = document.querySelector("#newListButton"); // Button for ne
 // Settings section
 const menuBtn = document.querySelector("#menuBtn"); //Btn
 const menu = document.querySelector("#menu"); // Menu
-const closeMenuBtn = document.querySelector("#closeMenuBtn"); //Close menu
 
 //Logic for menu
 menuBtn.addEventListener("click", () => {
   menu.classList.add("active");
 });
-
-closeMenuBtn.addEventListener("click", closeMenu);
 
 document.addEventListener("click", (event) => {
   // Check if the click happened outside the menu and not on the button
@@ -147,9 +144,9 @@ const showNewList = (event) => {
 
 // Function to show toast
 function showToast(message, duration = 3000) {
-  const container = document.getElementById('toast-container');
-  const toast = document.createElement('div');
-  toast.className = 'toast';
+  const container = document.getElementById("toast-container");
+  const toast = document.createElement("div");
+  toast.className = "toast";
   toast.textContent = message;
 
   container.appendChild(toast);
@@ -158,7 +155,6 @@ function showToast(message, duration = 3000) {
     toast.remove();
   }, duration);
 }
-
 
 // Show the starred list by default when the page loads
 document.addEventListener("DOMContentLoaded", () => {
@@ -176,13 +172,13 @@ function setUpTaskManager(
 ) {
   const formEx = document.querySelector(formSelector); // Select the form
   const list = document.querySelector(listSelector); // Select the list
+  const configBtnsContainer = document.querySelector(".menuActions");
   const sortConfigBtn = document.querySelector(sortConfigBtnSelector); //Select the button
   const sortConfig = document.querySelector(sortConfigSelector); // Selects the menu
   const listConfigBtn = document.querySelector(listConfigBtnSelector);
   const listConfig = document.querySelector(listConfigSelector);
 
   loadTasks(); // Load tasks from localStorage
-
 
   //Sort Logic
   sortConfigBtn.addEventListener("click", () => {
@@ -210,6 +206,25 @@ function setUpTaskManager(
     sortConfig.classList.remove("active");
   }
 
+  // Logic for sorting buttons
+  const sortBtnsContainer = document.querySelector("#sortBtnsContainer");
+  const myOrderBtn = document.getElementById("myOrderBtn");
+  const dateOrderBtn = document.getElementById("dateOrderBtn");
+  const recentlyStarredBtn = document.getElementById("recentlyStarredBtn");
+
+  sortBtnsContainer.addEventListener("click", (event) => {
+    if (event.target == myOrderBtn) {
+      closeSortConfig();
+      showToast("Setted your order");
+    } else if (event.target == dateOrderBtn) {
+      closeSortConfig();
+      showToast("Ordered by date");
+    } else if (event.target == recentlyStarredBtn) {
+      closeSortConfig();
+      showToast("Ordered by Recently Starred");
+    }
+  });
+
   // List Config Logic
   listConfigBtn.addEventListener("click", () => {
     //Opens and closes sort options menu
@@ -235,6 +250,25 @@ function setUpTaskManager(
     // Function to close menu
     listConfig.classList.remove("active");
   }
+
+    // // Logic for list config buttons
+    const listConfigBtnsContainer = document.getElementById("listConfigBtnsContainer")
+    const renameListBtn = document.getElementById("renameListBtn")
+    const deleteListBtn = document.getElementById("deleteListBtn")
+    const deleteCheckedTasksBtn = document.getElementById("deleteCheckedTasksBtn")
+  
+    listConfigBtnsContainer.addEventListener("click", (event) => {
+      if (event.target == renameListBtn) {
+        closelistConfig();
+        showToast("List renamed");
+      } else if (event.target == deleteListBtn) {
+        closelistConfig();
+        showToast("List deleted");
+      } else if (event.target == deleteCheckedTasksBtn) {
+        closelistConfig();
+        showToast("Completed tasks removed");
+      }
+    });
 
   // Add event listener for form submission
   formEx.addEventListener("submit", (e) => {

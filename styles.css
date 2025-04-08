@@ -44,7 +44,7 @@ h1 {
   position: fixed;
   top: 0;
   left: -100vw;
-  width: 80vw;
+  width: 75vw;
   height: 100%;
   padding-top: 2vh;
   transition: left 0.3s ease-in-out;
@@ -82,7 +82,7 @@ h1 {
 }
 
 #closeMenuBtn{
-    /* border: solid red 1px; */
+    border: solid red 1px;
 }
 
 .menuOption{
