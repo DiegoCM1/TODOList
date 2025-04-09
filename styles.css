@@ -1,3 +1,12 @@
+* {
+  box-sizing: border-box; /* Ensures padding and borders are included in element width */
+}
+
+body {
+  margin: 0; /* Remove default body margins */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
 .darkBody{
   background-color: rgb(90, 90, 90);
 }
@@ -69,7 +78,7 @@ h1 {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   background: rgba(0, 0, 0, 0.3);
   visibility: hidden;
