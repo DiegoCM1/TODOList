@@ -48,34 +48,21 @@ function closeMenu() {
 const menuOptions = document.getElementById("menuOptions");
 
 menuOptions.addEventListener("click", (event) => {
-  //Event listener to the parent menu
   if (event.target.closest("#themeOption")) {
     document.body.classList.toggle("darkBody");
-
-    if (document.body.classList.contains("darkBody")) {
-      // Validation if its dark or light
-      const themeIconParent = document.querySelector("#themeIcon"); //Select span
-      let themeIconChildren = themeIconParent.firstElementChild; // Select i
-      themeIconChildren.remove(); // Removes the only child
-
-      // Creates and inserts the new icon
-      themeIconChildren = document.createElement("i");
-      themeIconChildren.setAttribute("data-lucide", "sun");
-      themeIconParent.appendChild(themeIconChildren);
-    } else if (!document.body.classList.contains("darkBody")) {
-      const themeIconParent = document.querySelector("#themeIcon"); //Select span
-
-      let themeIconChildren = themeIconParent.firstElementChild; // Select i
-
-      themeIconChildren.remove(); // Removes the only child
-
-      // Creates and inserts the new icon
-      themeIconChildren = document.createElement("i");
-      themeIconChildren.setAttribute("data-lucide", "moon");
-      themeIconParent.appendChild(themeIconChildren);
-    }
-    // Re-initialize Lucide icons after adding them to the DOM
-    lucide.createIcons();
+  
+    const isDark = document.body.classList.contains("darkBody");
+    localStorage.setItem("theme", isDark ? "dark" : "light"); // ✅ Save to localStorage
+  
+    const themeIconParent = document.querySelector("#themeIcon");
+    let themeIconChildren = themeIconParent.firstElementChild;
+    themeIconChildren.remove();
+  
+    themeIconChildren = document.createElement("i");
+    themeIconChildren.setAttribute("data-lucide", isDark ? "sun" : "moon"); // ✅ Adjust icon based on theme
+    themeIconParent.appendChild(themeIconChildren);
+  
+    lucide.createIcons(); // Refresh icons
   } else if (event.target.closest("#notificationsOption")) {
     closeMenu();
     showToast("Coming Soon... 🔨");
@@ -159,6 +146,11 @@ function showToast(message, duration = 3000) {
 // Show the starred list by default when the page loads
 document.addEventListener("DOMContentLoaded", () => {
   showStarredList({ target: starredListButton }); // Simulate a click on the starred list button
+
+  const theme = localStorage.getItem("theme");
+  if (theme === "dark") {
+    document.body.classList.add("darkBody");
+  }
 });
 
 // Function to set up task management for a specific form and list

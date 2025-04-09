@@ -7,10 +7,9 @@ body {
   overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
-.darkBody{
+.darkBody {
   background-color: rgb(90, 90, 90);
 }
-
 
 .header {
   display: flex;
@@ -21,8 +20,7 @@ body {
   text-align: center;
   width: 100%;
   margin-bottom: 16px;
-    /* border: red solid 1px; */
-
+  /* border: red solid 1px; */
 }
 
 .titleSettingsContainer {
@@ -33,17 +31,13 @@ body {
   /* border: red solid 1px; */
 }
 
-
-.menuBtn{
+.menuBtn {
   transition: transform 0.2s;
-
 }
 
-.menuBtn:hover{
+.menuBtn:hover {
   transform: scale(1.05);
 }
-
-
 
 h1 {
   font-family: Arial, sans-serif;
@@ -70,13 +64,13 @@ h1 {
   height: 100%;
   padding-top: 2vh;
   transition: left 0.3s ease-in-out;
-  background-color:  rgb(192, 192, 192);
+  background-color: rgb(192, 192, 192);
   justify-content: flex-end;
   align-items: flex-end;
   align-content: end;
 }
 
-.darkBody .menu{
+.darkBody .menu {
   background-color: rgb(43, 43, 43);
 }
 
@@ -85,8 +79,8 @@ h1 {
   left: 0;
 }
 
-
-.overlay {   /* Bg effect */
+.overlay {
+  /* Bg effect */
   position: fixed;
   top: 0;
   left: 0;
@@ -103,7 +97,7 @@ h1 {
   opacity: 1;
 }
 
-.menuOption{
+.menuOption {
   /* border-bottom: solid gray 1px; */
   width: 100%;
   border: solid gray 1px;
@@ -113,7 +107,7 @@ h1 {
   align-items: center;
 }
 
-#menuOptions{
+#menuOptions {
   margin: 0;
   padding: 16px;
   font-size: 1.2rem;
@@ -127,11 +121,11 @@ h1 {
   /* border: solid red 1px; */
 }
 
-.menuIcon{
+.menuIcon {
   margin: 0% 5%;
 }
 
-.menuP{
+.menuP {
   /* border: solid red 1px; */
   display: flex;
   justify-content: flex-start;
@@ -162,10 +156,9 @@ nav {
   margin: 4px 2px;
   cursor: pointer;
   transition: transform 0.2s;
-
 }
 
-.buttonNav:hover{
+.buttonNav:hover {
   color: rgb(218, 218, 218);
   transform: scale(1.02);
 }
@@ -187,10 +180,10 @@ nav {
   border-radius: 16px;
 }
 
-.darkBody .List{
+.darkBody .List {
   color: white;
   background-color: rgb(43, 43, 43);
-  border:none;
+  border: none;
 }
 
 .menuActions {
@@ -201,19 +194,18 @@ nav {
   width: 100%;
 }
 
-.menuActionBtn{
+.menuActionBtn {
   background-color: transparent;
   border: none;
   /* border: red solid 1px; */
   transition: transform 0.2s;
 }
 
-.menuActionBtn:hover{
+.menuActionBtn:hover {
   transform: scale(1.03);
-
 }
 
-.darkBody .menuActionBtn{
+.darkBody .menuActionBtn {
   color: rgb(206, 206, 206);
 }
 
@@ -222,16 +214,16 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  width: 100%;
+  gap: 8px;
+  width: 90%;
   margin-bottom: 12px;
+  /* border: red solid 1px; */
 }
-
 
 /* INPUT */
 .input {
-  padding: 10px 14px;
-  font-size: 16px;
+  padding: 10px 10px;
+  font-size: 14px;
   border-radius: 8px;
   border: 1px solid #ccc;
   outline: none;
@@ -245,7 +237,7 @@ nav {
   box-shadow: 0 0 0 2px rgba(20, 20, 20, 0.2);
 }
 
-.darkBody .input:focus{
+.darkBody .input:focus {
   border-color: #c9c9c9;
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
 }
@@ -254,14 +246,14 @@ nav {
   background-color: #333;
   color: white;
   border: none;
-  padding: 10px 18px;
+  padding: 7px 7px;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 12px;
   cursor: pointer;
   transition: background-color 0.2s, transform 0.2s;
 }
 
-.darkBody .btnAddTask{
+.darkBody .btnAddTask {
   background-color: #0f0f0f;
 }
 
@@ -272,7 +264,7 @@ nav {
 
 /* List */
 
-.ulList{
+.ulList {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -283,8 +275,6 @@ nav {
   height: auto;
   overflow-x: hidden; /* Prevents horizontal scroll */
 }
-
-
 
 .newLi {
   display: flex;
@@ -301,19 +291,18 @@ nav {
   width: 70vw;
 }
 
-.darkBody .newLi{
+.darkBody .newLi {
   background-color: transparent;
   border: none;
   box-shadow: none;
 }
 
-.checkedNewLi{
+.checkedNewLi {
   background-color: rgb(150, 150, 150);
 }
 
-.darkBody .checkedNewLi{
+.darkBody .checkedNewLi {
   background-color: rgb(150, 150, 150);
-
 }
 
 .newLiText {
@@ -322,15 +311,14 @@ nav {
   white-space: normal; /* Allows text to wrap */
   width: 36vw;
   /* border:red 1px solid; */
-
 }
 
 .checked {
   text-decoration: line-through;
 }
 
-.darkBody .checked{
-  text-decoration:line-through;
+.darkBody .checked {
+  text-decoration: line-through;
 }
 
 .btnsContainer {
@@ -339,7 +327,6 @@ nav {
   background-color: transparent;
   /* border:red 1px solid; */
 }
-
 
 /* .btnAddTask {
   background-color: #333;
@@ -363,23 +350,22 @@ nav {
 
 /* Edit button */
 .btnEdit {
-  background-color: transparent; 
+  background-color: transparent;
   border: none;
 }
 
-.iconEdit{
+.iconEdit {
   color: black;
   transition: transform 0.2s;
 }
 
-.iconEdit:hover{
+.iconEdit:hover {
   transform: scale(1.03);
 }
 
-.darkBody .iconEdit{
+.darkBody .iconEdit {
   color: gray;
 }
-
 
 .inputEditTask {
   display: flex;
@@ -392,30 +378,30 @@ nav {
   border: none;
 }
 
-.iconFinishEdit{
+.iconFinishEdit {
   color: purple;
   transition: transform 0.2s;
 }
 
-.iconFinishEdit:hover{
+.iconFinishEdit:hover {
   transform: scale(1.05);
 }
 
-.darkBody .iconFinishEdit{
+.darkBody .iconFinishEdit {
   color: gray;
 }
 
-.cancelEditionBtn{
+.cancelEditionBtn {
   background-color: transparent;
   border: none;
   transition: transform 0.2s;
 }
 
-.cancelEditionBtn:hover{
+.cancelEditionBtn:hover {
   transform: scale(1.05);
 }
 
-.darkBody .cancelEditionBtn{
+.darkBody .cancelEditionBtn {
   color: gray;
 }
 
@@ -425,47 +411,42 @@ nav {
   border: none;
 }
 
-.iconRemove{
+.iconRemove {
   color: red;
   transition: transform 0.2s;
-
 }
 
-.iconRemove:hover{
+.iconRemove:hover {
   transform: scale(1.05);
 }
 
 /* Check button (medium gray, neutral) */
 .btnCheck {
   background-color: transparent;
-  border: none
+  border: none;
 }
 
-
-.iconCheck{
+.iconCheck {
   color: green;
   transition: transform 0.2s;
-
 }
 
-.iconCheck:hover{
+.iconCheck:hover {
   transform: scale(1.05);
 }
 
-
-
 /* SORT TASKS OPTIONS */
-.sortConfig{
+.sortConfig {
   position: fixed;
   left: 0;
   bottom: -26%;
   height: 25%;
   width: 100%;
   background-color: #333;
-  border-top-left-radius: 16px; 
-  border-top-right-radius: 16px; 
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
   display: flex;
-  flex-direction: column ;
+  flex-direction: column;
   transition: bottom 0.2s ease-in-out;
 }
 
@@ -474,7 +455,7 @@ nav {
   bottom: 0;
 }
 
-.sortConfigTitle{
+.sortConfigTitle {
   color: white;
   font-size: small;
   background-color: transparent;
@@ -485,16 +466,14 @@ nav {
   align-items: center;
 }
 
-
-.sortBtnsContainer{
+.sortBtnsContainer {
   display: flex;
-  flex-direction: column ;
+  flex-direction: column;
   flex-grow: 5;
   /* border: red  1px solid; */
 }
 
-
-.sortOption{
+.sortOption {
   border: none;
   background-color: transparent;
   color: white;
@@ -505,28 +484,27 @@ nav {
   flex-grow: 1;
 }
 
-.sortOption:hover{
+.sortOption:hover {
   background-color: rgb(117, 117, 117);
 }
 
-.sortOptionIcon{
+.sortOptionIcon {
   margin: 3px;
 }
 
-
 /* List Config*/
 
-.listConfig{
+.listConfig {
   position: fixed;
   left: 0;
   bottom: -26%;
   height: 20%;
   width: 100%;
   background-color: #333;
-  border-top-left-radius: 16px; 
-  border-top-right-radius: 16px; 
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
   display: flex;
-  flex-direction: column ;
+  flex-direction: column;
   transition: bottom 0.2s ease-in-out;
 }
 
@@ -535,17 +513,14 @@ nav {
   bottom: 0;
 }
 
-
-
-.listConfigBtnsContainer{
+.listConfigBtnsContainer {
   display: flex;
-  flex-direction: column ;
+  flex-direction: column;
   flex-grow: 5;
   /* border: red  1px solid; */
 }
 
-
-.listConfigOption{
+.listConfigOption {
   border: none;
   background-color: transparent;
   color: white;
@@ -556,7 +531,7 @@ nav {
   flex-grow: 1;
 }
 
-.listConfigOption:hover{
+.listConfigOption:hover {
   background-color: rgb(117, 117, 117);
 }
 
@@ -566,7 +541,7 @@ nav {
   position: fixed;
   bottom: 20px;
   left: 50%;
-  transform: translateX(-50%);  
+  transform: translateX(-50%);
   z-index: 9999;
   display: flex;
   flex-direction: column;
@@ -585,13 +560,20 @@ nav {
 }
 
 @keyframes fadeInOut {
-  0% { opacity: 0; transform: translateY(20px); }
-  10%, 90% { opacity: 1; transform: translateY(0); }
-  100% { opacity: 0; transform: translateY(-10px); }
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  10%,
+  90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
 }
-
-
-
 
 /* Tablet Styles */
 @media (min-width: 768px) {
@@ -603,9 +585,7 @@ nav {
     flex-direction: column; /* Align header elements horizontally */
     justify-content: space-between;
     /* border: red solid 1px; */
-
   }
-  
 
   h1 {
     font-size: 2rem; /* Larger title for tablets */
@@ -625,7 +605,7 @@ nav {
     width: 100%;
     /* border: red solid 1px; */
   }
-  
+
   .buttonNav {
     justify-content: center;
     align-items: center;
@@ -633,11 +613,40 @@ nav {
     height: 50px;
   }
 
+  .form {
+    gap: 12px;
+    width: 100%;
+    margin-bottom: 12px;
+  }
+
+  .input {
+    padding: 10px 14px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    max-width: 400px;
+  }
+
+  .darkBody .input:focus {
+    border-color: #c9c9c9;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+  }
+
+  .btnAddTask {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+  }
+
   .List {
     width: 80%; /* Increase list width */
     margin: 16px auto; /* Center the list */
     /* border: blue solid 1px; */
-
   }
 
   .menuActions {
@@ -646,26 +655,22 @@ nav {
     align-items: center;
     margin-bottom: 8px;
     width: 100%;
-
   }
 
-  .listTitleContainer{
+  .listTitleContainer {
     display: flex;
     justify-content: end;
     flex-grow: 1;
     /* border: red solid 1px; */
-
-  
   }
 
-
-  .menuActionBtnContainer{
+  .menuActionBtnContainer {
     display: flex;
     justify-content: center;
     flex-grow: 1;
   }
 
-  .ulList{
+  .ulList {
     width: 70%;
   }
 
@@ -673,7 +678,6 @@ nav {
     width: 90%; /* Wider task items */
     padding: 16px 20px;
     /* border: red solid 1px; */
-
   }
 
   .newLiText {
@@ -704,10 +708,9 @@ nav {
   body {
     font-size: 18px; /* Larger font size for PCs */
   }
-  .menuBtn{
+  .menuBtn {
     width: 3%;
   }
-
 
   h1 {
     font-size: 2.5rem;
@@ -718,11 +721,9 @@ nav {
     justify-content: flex-start;
     margin-top: 0;
   }
-  
 
-  .nav{
-        /* border: blue solid 1px; */
-
+  .nav {
+    /* border: blue solid 1px; */
   }
 
   .menu {
