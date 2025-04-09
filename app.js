@@ -190,8 +190,8 @@ function setUpTaskManager(
     }
   });
 
+  // Closes if clicking outside
   document.addEventListener("click", (event) => {
-    // Check if the click happened outside the menu and not on the button
     if (
       !sortConfig.contains(event.target) &&
       !sortConfigBtn.contains(event.target)
@@ -235,8 +235,8 @@ function setUpTaskManager(
     }
   });
 
+  //Closes if the click was outside of everything
   document.addEventListener("click", (event) => {
-    // Check if the click happened outside the menu and not on the button
     if (
       !listConfig.contains(event.target) &&
       !listConfigBtn.contains(event.target)
@@ -251,24 +251,28 @@ function setUpTaskManager(
     listConfig.classList.remove("active");
   }
 
-    // // Logic for list config buttons
-    const listConfigBtnsContainer = document.getElementById("listConfigBtnsContainer")
-    const renameListBtn = document.getElementById("renameListBtn")
-    const deleteListBtn = document.getElementById("deleteListBtn")
-    const deleteCheckedTasksBtn = document.getElementById("deleteCheckedTasksBtn")
-  
-    listConfigBtnsContainer.addEventListener("click", (event) => {
-      if (event.target == renameListBtn) {
-        closelistConfig();
-        showToast("List renamed");
-      } else if (event.target == deleteListBtn) {
-        closelistConfig();
-        showToast("List deleted");
-      } else if (event.target == deleteCheckedTasksBtn) {
-        closelistConfig();
-        showToast("Completed tasks removed");
-      }
-    });
+  // // Logic for list config buttons
+  const listConfigBtnsContainer = document.getElementById(
+    "listConfigBtnsContainer"
+  );
+  const renameListBtn = document.getElementById("renameListBtn");
+  const deleteListBtn = document.getElementById("deleteListBtn");
+  const deleteCheckedTasksBtn = document.getElementById(
+    "deleteCheckedTasksBtn"
+  );
+
+  listConfigBtnsContainer.addEventListener("click", (event) => {
+    if (event.target == renameListBtn) {
+      closelistConfig();
+      showToast("List renamed");
+    } else if (event.target == deleteListBtn) {
+      closelistConfig();
+      showToast("List deleted");
+    } else if (event.target == deleteCheckedTasksBtn) {
+      closelistConfig();
+      showToast("Completed tasks removed");
+    }
+  });
 
   // Add event listener for form submission
   formEx.addEventListener("submit", (e) => {
