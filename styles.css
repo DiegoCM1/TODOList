@@ -33,6 +33,18 @@ body {
   /* border: red solid 1px; */
 }
 
+
+.menuBtn{
+  transition: transform 0.2s;
+
+}
+
+.menuBtn:hover{
+  transform: scale(1.05);
+}
+
+
+
 h1 {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -149,10 +161,13 @@ nav {
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
+  transition: transform 0.2s;
+
 }
 
 .buttonNav:hover{
   color: rgb(218, 218, 218);
+  transform: scale(1.02);
 }
 
 .selectedBtnNav {
@@ -189,6 +204,13 @@ nav {
 .menuActionBtn{
   background-color: transparent;
   border: none;
+  /* border: red solid 1px; */
+  transition: transform 0.2s;
+}
+
+.menuActionBtn:hover{
+  transform: scale(1.03);
+
 }
 
 .darkBody .menuActionBtn{
@@ -200,8 +222,52 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 12px;
   width: 100%;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+}
+
+
+/* INPUT */
+.input {
+  padding: 10px 14px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  flex: 1;
+  max-width: 400px;
+}
+
+.input:focus {
+  border-color: #333;
+  box-shadow: 0 0 0 2px rgba(20, 20, 20, 0.2);
+}
+
+.darkBody .input:focus{
+  border-color: #c9c9c9;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+}
+
+.btnAddTask {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.darkBody .btnAddTask{
+  background-color: #0f0f0f;
+}
+
+.btnAddTask:hover {
+  background-color: #0f0f0f;
+  transform: scale(1.03);
 }
 
 /* List */
@@ -274,18 +340,40 @@ nav {
   /* border:red 1px solid; */
 }
 
+
+/* .btnAddTask {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.darkBody .btnAddTask{
+  background-color: #0f0f0f;
+}
+
+.btnAddTask:hover {
+  background-color: #0f0f0f;
+  transform: scale(1.03);
+} */
+
 /* Edit button */
 .btnEdit {
   background-color: transparent; 
   border: none;
 }
 
-/* .btnEdit:hover {
-  background-color: #b0b0b0;
-} */
-
 .iconEdit{
   color: black;
+  transition: transform 0.2s;
+}
+
+.iconEdit:hover{
+  transform: scale(1.03);
 }
 
 .darkBody .iconEdit{
@@ -304,12 +392,13 @@ nav {
   border: none;
 }
 
-/* .btnFinishEdit:hover {
-  background-color: #f0f0f0;
-} */
-
 .iconFinishEdit{
   color: purple;
+  transition: transform 0.2s;
+}
+
+.iconFinishEdit:hover{
+  transform: scale(1.05);
 }
 
 .darkBody .iconFinishEdit{
@@ -319,6 +408,11 @@ nav {
 .cancelEditionBtn{
   background-color: transparent;
   border: none;
+  transition: transform 0.2s;
+}
+
+.cancelEditionBtn:hover{
+  transform: scale(1.05);
 }
 
 .darkBody .cancelEditionBtn{
@@ -331,12 +425,14 @@ nav {
   border: none;
 }
 
-/* .btnRemove:hover {
-  background-color: #444;
-} */
-
 .iconRemove{
   color: red;
+  transition: transform 0.2s;
+
+}
+
+.iconRemove:hover{
+  transform: scale(1.05);
 }
 
 /* Check button (medium gray, neutral) */
@@ -345,14 +441,16 @@ nav {
   border: none
 }
 
-/* .btnCheck:hover {
-  background-color: #555;
-} */
 
 .iconCheck{
   color: green;
+  transition: transform 0.2s;
+
 }
 
+.iconCheck:hover{
+  transform: scale(1.05);
+}
 
 
 
