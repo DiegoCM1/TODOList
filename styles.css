@@ -27,7 +27,7 @@ body {
 
 .titleSettingsContainer {
   display: flex;
-  justify-content: s;
+  justify-content: center;
   margin: 1vh 3vw;
   align-items: center;
   /* border: red solid 1px; */
@@ -502,10 +502,12 @@ nav {
   }
 
   .header {
-    flex-direction: row; /* Align header elements horizontally */
+    flex-direction: column; /* Align header elements horizontally */
     justify-content: space-between;
-    padding: 20px;
+    /* border: red solid 1px; */
+
   }
+  
 
   h1 {
     font-size: 2rem; /* Larger title for tablets */
@@ -513,12 +515,12 @@ nav {
   }
 
   .menu {
-    width: 50vw; /* Reduce menu width for tablets */
+    width: 40vw; /* Reduce menu width for tablets */
   }
 
   nav {
     display: flex;
-    justify-content: start;
+    justify-content: center;
     background-color: #333;
     text-align: center;
     align-items: center;
@@ -584,6 +586,10 @@ nav {
     gap: 2vw; /* Add spacing between buttons */
   }
 
+  .inputEditTask {
+    width: 35vw;
+  }
+
   .sortConfig,
   .listConfig {
     height: 20%; /* Adjust height for better visibility */
@@ -600,17 +606,29 @@ nav {
   body {
     font-size: 18px; /* Larger font size for PCs */
   }
-
-  .header {
-    padding: 30px;
+  .menuBtn{
+    width: 3%;
   }
 
+
   h1 {
-    font-size: 2.5rem; /* Even larger title for PCs */
+    font-size: 2.5rem;
+    width: 90%;
+  }
+
+  .titleSettingsContainer {
+    justify-content: flex-start;
+    margin-top: 0;
+  }
+  
+
+  .nav{
+        /* border: blue solid 1px; */
+
   }
 
   .menu {
-    width: 30vw; /* Narrower menu for PCs */
+    width: 20vw; /* Narrower menu for PCs */
   }
 
   .List {
@@ -619,7 +637,7 @@ nav {
   }
 
   .newLi {
-    width: 50%; /* Wider task items */
+    width: 80%; /* Wider task items */
     justify-content: space-between;
     text-overflow: hidden;
   }
@@ -632,9 +650,13 @@ nav {
     gap: 1vw; /* Adjust spacing between buttons */
   }
 
+  .inputEditTask {
+    width: 24vw;
+  }
+
   .sortConfig,
   .listConfig {
-    height: 15%; /* Reduce height for better alignment */
+    height: 20%; /* Reduce height for better alignment */
   }
 
   .toast {
